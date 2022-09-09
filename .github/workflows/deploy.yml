@@ -1,5 +1,5 @@
 # name，也就是当前 workflow 的名称
-name: buildLibrary
+name: buildAndDeployLibrary
 
 # 下文的意思是：当监听到tag的变更时，执行脚本，比如我们在 github 内新建一个tag
 on:
@@ -11,11 +11,11 @@ on:
 jobs:
   docs_and_publish:
     # name: 在 Github 中显示的 job 名称
-    name: buildLibraryDMM
+    name: buildAndDeployLibrary
     runs-on: ubuntu-latest
     steps:
       # name:  当前 step 的名字
-      - name: Checkout    # 获取分支的代码和提交记录
+      - name: Checkout # 获取分支的代码和提交记录
         uses: actions/checkout@v2
 
       - name: Setup Node.js v16.x # 设置 Node.js 的环境
@@ -39,7 +39,7 @@ jobs:
           github_token: ${{ secrets.DMM_DEPLOY }} # secret 名
           commit_message: release # 部署时的 git 提交信息，根据自身需要填写即可
 
-      - name: Publish to NPM  # 推送到 NPM 上
+      - name: Publish to NPM # 推送到 NPM 上
         run: |
           npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
           npm publish
