@@ -5,7 +5,7 @@ name: buildAndDeployLibrary
 on:
   push:
     branches:
-    - master
+      - master
 
 # jobs 也就是任务的意思
 jobs:
