@@ -7,7 +7,7 @@ export default class Nftscan {
   evm: NftscanEvm;
 
   constructor(config: NftscanConfig) {
-    console.log('init', config);
+    console.log('init:', config);
     this.config = config;
     this.evm = new NftscanEvm(config);
   }
