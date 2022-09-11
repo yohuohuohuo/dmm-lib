@@ -3,6 +3,11 @@
   "version": "1.0.3",
   "description": "yohuohuohuo library",
   "main": "index.js",
+  "files": [
+    "dist",
+    "src",
+    "types"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rimraf dist types && cross-env NODE_ENV=development webpack-dev-server --config ./scripts/webpack.dev.js",
@@ -21,7 +26,7 @@
     "url": "git@github.com:yohuohuohuo/dmm-lib.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "yohuohuohuo",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.19.0",

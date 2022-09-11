@@ -22,7 +22,8 @@
       "@docs/*": ["docs/*"],
       "@public/*": ["public/*"],
       "@test/*": ["test/*"]
-    }
+    },
+    "resolveJsonModule": true
   },
   // 编译器默认包含的编译文件，src是源代码文件夹，test是jest测试代码文件夹
   "include": ["src/**/*", "test/**/*"],
