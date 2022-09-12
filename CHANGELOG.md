@@ -1,4 +1,12 @@
 # Changelog
+### [1.0.9](https://github.com/yohuohuohuo/dmm-lib/compare/v1.0.8...v1.0.9) (2022-09-12)
+
+
+### ✨ Features | 新功能
+
+* add @types/estree ([00ec6e3](https://github.com/yohuohuohuo/dmm-lib/commit/00ec6e38a2421335ba406fd637d95ca780968c4e))
+* release v1.0.8 with rollup ([f233364](https://github.com/yohuohuohuo/dmm-lib/commit/f23336472e22c1b8677ba31a546cef9d5bd3aa9d))
+
 ### [1.0.8](https://github.com/yohuohuohuo/dmm-lib/compare/v1.0.7...v1.0.8) (2022-09-12)
 
 
