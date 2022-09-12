@@ -1,4 +1,11 @@
 # Changelog
+### [1.0.11](https://github.com/yohuohuohuo/dmm-lib/compare/v1.0.10...v1.0.11) (2022-09-12)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* rollup entry file ([bd0d664](https://github.com/yohuohuohuo/dmm-lib/commit/bd0d664a395c8c44eeb8e0116ebdfbc3d65d7549))
+
 ### [1.0.10](https://github.com/yohuohuohuo/dmm-lib/compare/v1.0.9...v1.0.10) (2022-09-12)
 
 

@@ -16,6 +16,6 @@ export default class Nftscan {
   }
 
   static getCount() {
-    return 2;
+    return 3;
   }
 }
