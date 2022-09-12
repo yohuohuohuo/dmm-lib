@@ -80,5 +80,8 @@
     "skip": {
       "commit": true
     }
+  },
+  "dependencies": {
+    "@types/estree": "^0.0.51"
   }
 }
