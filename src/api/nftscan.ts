@@ -14,4 +14,8 @@ export default class Nftscan {
   getEvmKey() {
     return this.evm.config.apiKey;
   }
+
+  static getCount() {
+    return 1;
+  }
 }
