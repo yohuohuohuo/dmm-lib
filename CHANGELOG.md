@@ -1,4 +1,12 @@
 # Changelog
+### [1.0.16](https://github.com/yohuohuohuo/dmm-lib/compare/v1.0.15...v1.0.16) (2022-09-13)
+
+
+### ✨ Features | 新功能
+
+* change rollup config ([0fd4bad](https://github.com/yohuohuohuo/dmm-lib/commit/0fd4badbe23fde03ee6de474c0bf5b2f8ab54ab4))
+* release v1.0.15 ([3e9face](https://github.com/yohuohuohuo/dmm-lib/commit/3e9face34f9143384c6c5a22a53c693f949f20ad))
+
 ### [1.0.15](https://github.com/yohuohuohuo/dmm-lib/compare/v1.0.14...v1.0.15) (2022-09-12)
 
 
