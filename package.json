@@ -18,8 +18,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "rimraf dist types && cross-env NODE_ENV=development webpack-dev-server --config ./scripts/webpack.dev.js",
-    "build": "npm run lint && rimraf dist types && rollup -c rollup.config.js",
+    "dev": "rimraf dist types && rollup -c rollup.config.dev.js -w",
+    "build": "npm run lint && rimraf dist types && rollup -c rollup.config.prod.js",
     "docs-dev": "vuepress dev docs",
     "docs-build": "vuepress build docs",
     "lint": "eslint src",
@@ -67,6 +67,8 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.70.1",
     "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-serve": "^2.0.1",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-typescript2": "^0.31.2",
     "standard-version": "^9.5.0",
