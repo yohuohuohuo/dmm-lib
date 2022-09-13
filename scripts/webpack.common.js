@@ -9,9 +9,9 @@ module.exports = {
   // 定义了编译打包之后的文件名以及所在路径。还有打包的模块类型
   output: {
     // 打包后的产物名
-    filename: "nftscan-sdk.js",
+    filename: "index.js",
     // 在全局变量中增加一个Nftscan变量
-    library: "NftscanSDK",
+    // library: "NftscanSDK",
     // 打包成umd模块
     libraryTarget: "umd",
     // libraryExport这个属性需要设置，否则导出后，外层会包有一层default

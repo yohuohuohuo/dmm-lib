@@ -2,8 +2,8 @@
   "name": "dmm-lib",
   "version": "1.0.16",
   "description": "yohuohuohuo library",
-  "main": "dist/index.umd.js",
-  "module": "dist/index.es5.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "./dist/src/index.d.ts",
   "files": [
     "dist"
@@ -11,8 +11,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rimraf dist types && cross-env NODE_ENV=development webpack-dev-server --config ./scripts/webpack.dev.js",
-    "build1": "npm run lint && rimraf dist types && cross-env NODE_ENV=production webpack --config ./scripts/webpack.prod.js",
-    "build": "npm run lint && rimraf dist types && rollup -c rollup.config.ts",
+    "build": "npm run lint && rimraf dist types && cross-env NODE_ENV=production webpack --config ./scripts/webpack.prod.js",
+    "build1": "npm run lint && rimraf dist types && rollup -c rollup.config.ts",
     "docs-dev": "vuepress dev docs",
     "docs-build": "vuepress build docs",
     "lint": "eslint src",
