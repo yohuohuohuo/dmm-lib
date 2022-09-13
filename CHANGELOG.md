@@ -1,4 +1,13 @@
 # Changelog
+### [1.1.2](https://github.com/yohuohuohuo/dmm-lib/compare/v1.1.1...v1.1.2) (2022-09-13)
+
+
+### ✨ Features | 新功能
+
+* add rollup hot update ([c11f7fb](https://github.com/yohuohuohuo/dmm-lib/commit/c11f7fb830792eb66e19c32cadff384ede393e82))
+* release v1.1.1 ([6c01594](https://github.com/yohuohuohuo/dmm-lib/commit/6c0159411419baaea8bac54d79f9cfc880e4b5d8))
+* remove webpack ([668ac38](https://github.com/yohuohuohuo/dmm-lib/commit/668ac380f3efe516a33d3ef06d66ab710fa88b5e))
+
 ### [1.1.1](https://github.com/yohuohuohuo/dmm-lib/compare/v1.1.0...v1.1.1) (2022-09-13)
 
 
