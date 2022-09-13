@@ -1,4 +1,12 @@
 # Changelog
+### [1.0.17](https://github.com/yohuohuohuo/dmm-lib/compare/v1.0.16...v1.0.17) (2022-09-13)
+
+
+### ✨ Features | 新功能
+
+* change to webpack build ([63a9360](https://github.com/yohuohuohuo/dmm-lib/commit/63a93602f6aeaa9d2aa62902e0a3b1343a19fac9))
+* release 1.0.16 ([097135a](https://github.com/yohuohuohuo/dmm-lib/commit/097135a28d601050350e9a7f2b4ebca56bd12eab))
+
 ### [1.0.16](https://github.com/yohuohuohuo/dmm-lib/compare/v1.0.15...v1.0.16) (2022-09-13)
 
 

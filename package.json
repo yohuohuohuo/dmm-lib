@@ -1,6 +1,6 @@
 {
   "name": "dmm-lib",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "yohuohuohuo library",
   "main": "dist/index.js",
   "module": "dist/index.js",
