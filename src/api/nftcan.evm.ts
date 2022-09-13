@@ -1,4 +1,4 @@
-import { NftscanConfig } from '@/types/type';
+import { NftscanConfig } from '../types/type';
 
 // eslint-disable-next-line import/prefer-default-export
 export class NftscanEvm {

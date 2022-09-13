@@ -17,3 +17,6 @@ dist
 
 # temp
 .temp
+
+#rollup
+.rpt2_cache

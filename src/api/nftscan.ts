@@ -1,4 +1,4 @@
-import { NftscanConfig } from '@/types/type';
+import { NftscanConfig } from '../types/type';
 import { NftscanEvm } from './nftcan.evm';
 
 export default class Nftscan {

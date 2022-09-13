@@ -11,7 +11,7 @@
     // 生成相应的 .d.ts文件
     "declaration": true,
     // 生成的 .d.ts文件路径，这里统一生成到types文件夹下
-    "declarationDir": "types",
+    "declarationDir": "dist/src",
     // 报错时不生成输出文件
     "noEmitOnError": true,
     // baseUrl来告诉编译器到哪里去查找模块，所有非相对模块导入都会被当做相对于 baseUrl。
