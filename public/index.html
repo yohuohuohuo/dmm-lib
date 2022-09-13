@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nftscan</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../dist/umd/index.js"></script>
   </head>
   <body>
@@ -13,5 +14,6 @@
   <script>
     console.log('---s---0', this);
     console.log('---s---1', DmmLib.Nftscan.getCount());
+    console.log('---s---2', new DmmLib.Nftscan({ apiKey: '' }).evm.getAccountOwnNft());
   </script>
 </html>

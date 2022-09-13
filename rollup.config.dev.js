@@ -5,12 +5,13 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
+import pkg from './package.json';
 
 export default {
   input: 'src/index.ts',
   output: [{ dir: 'dist/umd', name: 'DmmLib', format: 'umd', sourcemap: true }],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
-  external: [],
+  external: [...Object.keys(pkg.dependencies || {})],
   watch: {
     include: 'src/**',
   },
