@@ -12,8 +12,19 @@
     <div>本地测试</div>
   </body>
   <script>
-    console.log('---s---0', this);
-    console.log('---s---1', DmmLib.Nftscan.getCount());
-    console.log('---s---2', new DmmLib.Nftscan({ apiKey: '' }).evm.getAccountOwnNft());
+    console.log('---本地测试---');
+    const nftscan = new DmmLib.Nftscan({ apiKey: 'GBQfJugR' });
+    const nftscanEvm = nftscan.evm;
+
+    const testApi = async () => {
+      const result = await nftscanEvm.getAccountOwn('0xE6d884c5195Aa6187b554E542DEaDcF0C91a431a', {
+        erc_type: 'erc721',
+      });
+      console.log('---test result--->', result);
+    };
+
+    window.onload = () => {
+      testApi();
+    };
   </script>
 </html>

@@ -1,21 +1,16 @@
-import { NftscanConfig } from '../types/type';
-import { NftscanEvm } from './nftcan.evm';
+import { initHttpConfig } from '../http/nftscan.http';
+import { NftscanConfig } from '../types/nftscan-type';
+import NftscanEvm from './nftcan.evm';
 
 export default class Nftscan {
   config: NftscanConfig;
 
-  evm: NftscanEvm;
-
   constructor(config: NftscanConfig) {
     this.config = config;
-    this.evm = new NftscanEvm(config);
+    initHttpConfig(this.config);
   }
 
-  getEvmKey() {
-    return this.evm.config.apiKey;
-  }
-
-  static getCount() {
-    return 12;
+  get evm(): NftscanEvm {
+    return new NftscanEvm(this.config);
   }
 }
