@@ -1,15 +1,23 @@
 import axios from 'axios';
+import { NftscanError, NsError } from '@/types/nftscan-error';
 import { NftscanConfig } from '@/types/nftscan-type';
 import { isEmpty } from '@/util/common.util';
-import { NftscanError, NsError } from '@/types/nftscan-error';
 import NftscanConst from '@/util/nftscan.const';
 
+/**
+ * NFTScan's api url
+ */
 export class NftscanApi {
   static assets = {
     accountOwn: '/v2/account/own/',
+    assetsBatch: '/v2/assets/batch',
   };
 }
 
+/**
+ * Configure the axios interceptor
+ * @param nftscanConfig NFTScan SDK Initialization parameters
+ */
 export function initHttpConfig(nftscanConfig: NftscanConfig) {
   axios.interceptors.request.use(
     (config) => {
@@ -51,7 +59,14 @@ export function initHttpConfig(nftscanConfig: NftscanConfig) {
   );
 }
 
-export function nftscanGet(url: string, data: unknown, nftscanConfig: NftscanConfig) {
+/**
+ * NFTScan's wrapper function of send get http request
+ * @param nftscanConfig NFTScan SDK Initialization parameters
+ * @param url api url
+ * @param data post data
+ * @returns Promise
+ */
+export function nftscanGet<T, V>(nftscanConfig: NftscanConfig, url: string, data?: T): Promise<V> {
   const { apiKey } = nftscanConfig;
   if (isEmpty(apiKey)) {
     return Promise.reject(new NftscanError(NsError.API_KEY));
@@ -59,4 +74,19 @@ export function nftscanGet(url: string, data: unknown, nftscanConfig: NftscanCon
   return axios.get(url, {
     params: data,
   });
+}
+
+/**
+ * NFTScan's wrapper function of send post http request
+ * @param nftscanConfig NFTScan SDK Initialization parameters
+ * @param url api url
+ * @param data post data
+ * @returns Promise
+ */
+export function nftscanPost<T, V>(nftscanConfig: NftscanConfig, url: string, data?: T): Promise<V> {
+  const { apiKey } = nftscanConfig;
+  if (isEmpty(apiKey)) {
+    return Promise.reject(new NftscanError(NsError.API_KEY));
+  }
+  return axios.post(url, data);
 }

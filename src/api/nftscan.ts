@@ -13,4 +13,15 @@ export default class Nftscan {
   get evm(): NftscanEvm {
     return new NftscanEvm(this.config);
   }
+
+  async test() {
+    this.evm
+      .queryAssetsBatch([{ contract_address: '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb', token_id: '1' }], true)
+      .then((res) => {
+        console.log('----Nftscan', res);
+      })
+      .catch((err) => {
+        console.log('----Nftscan err', err);
+      });
+  }
 }
