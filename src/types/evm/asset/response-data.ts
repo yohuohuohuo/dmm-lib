@@ -1,4 +1,4 @@
-import { NFTScanResponseData } from '../../nftscan-type';
+import { BaseNFTScanResponseData } from '../../nftscan-type';
 
 interface Attributes {
   /**
@@ -144,8 +144,53 @@ export interface Asset {
 }
 
 /**
- * The response parameters of 'getAccountOwn' api
+ * The common response parameters of asset's api
  */
-export interface AccountOwnResponse extends NFTScanResponseData {
+export interface CommonAssetResponse extends BaseNFTScanResponseData {
   content: Array<Asset>;
+}
+
+/**
+ * The response parameters of api 'getAccountOwnAll'
+ */
+export interface AccountOwnAllResponse {
+  /**
+   * List of Asset Model
+   */
+  assets: Array<Asset>;
+
+  /**
+   * The contract address
+   */
+  contract_address: string;
+
+  /**
+   * The name of the contract
+   */
+  contract_name: string;
+
+  /**
+   * The description
+   */
+  description: string;
+
+  /**
+   * The floor price of the collection
+   */
+  floor_price: number;
+
+  /**
+   * How many items for the collection
+   */
+  items_total: number;
+
+  /**
+   * The logo URL
+   */
+  logo_url: string;
+
+  /**
+   * How many items the account address owns
+   */
+  owns_total: number;
 }

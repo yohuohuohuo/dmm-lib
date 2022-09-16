@@ -13,7 +13,7 @@
   </body>
   <script>
     console.log('---本地测试---');
-    const nftscan = new DmmLib.Nftscan({ apiKey: 'GBQfJugR' });
+    const nftscan = new DmmLib.Nftscan({ apiKey: 'GBQfJugR', chain: 'ETH' });
     const nftscanEvm = nftscan.evm;
 
     const testApi = async () => {
@@ -21,7 +21,6 @@
       //   erc_type: 'erc721',
       // });
       // console.log('---test result--->', result);
-
       // nftscan.test();
     };
 
