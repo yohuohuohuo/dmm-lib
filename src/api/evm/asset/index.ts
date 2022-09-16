@@ -1,9 +1,9 @@
-import { NftscanApi, nftscanGet, nftscanPost } from '@/http/nftscan.http';
-import { AccountOwnParams, AssetsBatchItemParams, AssetsBatchParams } from '@/types/assets/evm/request-params';
-import { AccountOwnResponse, Asset } from '@/types/assets/evm/response-data';
-import { NftscanConfig } from '../types/nftscan-type';
+import { nftscanGet, NftscanApi, nftscanPost } from '../../../http/nftscan.http';
+import { AccountOwnParams, AssetsBatchItemParams, AssetsBatchParams } from '../../../types/evm/asset/request-params';
+import { AccountOwnResponse, Asset } from '../../../types/evm/asset/response-data';
+import { NftscanConfig } from '../../../types/nftscan-type';
 
-export default class NftscanEvm {
+export default class NftscanEvmAsset {
   config: NftscanConfig;
 
   constructor(config: NftscanConfig) {

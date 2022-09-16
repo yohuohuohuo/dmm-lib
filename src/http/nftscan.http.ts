@@ -23,7 +23,7 @@ export function initHttpConfig(nftscanConfig: NftscanConfig) {
     (config) => {
       return {
         ...config,
-        baseURL: NftscanConst.apiDomain,
+        baseURL: NftscanConst.baseUrl,
         headers: { ...config.headers, 'X-API-KEY': nftscanConfig.apiKey },
       };
     },
@@ -60,7 +60,7 @@ export function initHttpConfig(nftscanConfig: NftscanConfig) {
 }
 
 /**
- * NFTScan's wrapper function of send get http request
+ * NFTScan SDK's wrapper function of send get http request
  * @param nftscanConfig NFTScan SDK Initialization parameters
  * @param url api url
  * @param data post data
@@ -77,7 +77,7 @@ export function nftscanGet<T, V>(nftscanConfig: NftscanConfig, url: string, data
 }
 
 /**
- * NFTScan's wrapper function of send post http request
+ * NFTScan SDK's wrapper function of send post http request
  * @param nftscanConfig NFTScan SDK Initialization parameters
  * @param url api url
  * @param data post data

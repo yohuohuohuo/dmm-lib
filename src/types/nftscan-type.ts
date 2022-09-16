@@ -1,11 +1,12 @@
 /* eslint-disable no-shadow */
 
 /**
- * NFTScan's config properties
+ * NFTScan SDK's config properties
+ * To use our SDK, You need to register an account on NFTScan open platform({@link https://developer.nftscan.com/}) and get your API-KEY for making calls to API services.
  */
 export interface NftscanConfig {
   /**
-   * the api key of NFTScan(https://developer.nftscan.com/)
+   * the api key of NFTScan
    */
   apiKey: string;
 }

@@ -1,4 +1,8 @@
 /* eslint-disable no-shadow */
+
+/**
+ * NFTScan SDK's wrapper error object
+ */
 export class NftscanError {
   /**
    * error code
@@ -16,6 +20,9 @@ export class NftscanError {
   }
 }
 
+/**
+ * NFTScan SDK's error code
+ */
 export enum NsError {
   API_KEY = 'api_key_error',
   REQUEST_ERROR = 'request_error',

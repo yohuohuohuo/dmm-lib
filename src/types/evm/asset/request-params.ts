@@ -1,4 +1,4 @@
-import { ErcType, NftscanRequestData } from '@/types/nftscan-type';
+import { NftscanRequestData, ErcType } from '../../nftscan-type';
 
 /**
  * The parameters of api 'getAccountOwn'

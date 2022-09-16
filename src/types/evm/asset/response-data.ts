@@ -1,4 +1,4 @@
-import { NFTScanResponseData } from '@/types/nftscan-type';
+import { NFTScanResponseData } from '../../nftscan-type';
 
 interface Attributes {
   /**
@@ -17,6 +17,10 @@ interface Attributes {
   percentage: string;
 }
 
+/**
+ * The parameters of Asset, which represents a unique digital item whose ownership is managed by the blockchain
+ * {@link https://docs.nftscan.com/nftscan/Asset%20Model}
+ */
 export interface Asset {
   /**
    * The amount of the NFT (Default 1 for the ERC-721 NFT)
