@@ -1,7 +1,6 @@
 import { nftscanGet, nftscanPost } from '../../../http/nftscan.http';
 import {
   AccountMintParams,
-  AccountOwnAllParams,
   AccountOwnParams,
   BatchQueryAssetsListItemParams,
   BatchQueryAssetsParams,
@@ -10,7 +9,7 @@ import {
 } from '../../../types/evm/asset/request-params';
 import { AccountOwnAllResponse, CommonAssetResponse, Asset } from '../../../types/evm/asset/response-data';
 import { invalidParam, missingParam, NftscanError, NsError } from '../../../types/nftscan-error';
-import { NftscanConfig } from '../../../types/nftscan-type';
+import { ErcType, NftscanConfig, NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
 
@@ -57,23 +56,25 @@ export default class NftscanEvmAsset {
    * - This endpoint returns all NFTs owned by an account address. And the NFTs are grouped according to contract address.
    * - details: {@link https://docs.nftscan.com/nftscan/getAccountNftAssetsGroupByContractAddressUsingGET}
    * @param accountAddress The address of the owner of the assets
-   * @param data The query params {@link AccountOwnAllParams}
+   * @param ercType Can be erc721 or erc1155.
+   * @param showAttribute Whether to load attribute data of the asset. Default is false
    * @returns Promise<{@link AccountOwnAllResponse}>
    */
-  getAccountOwnAll(accountAddress: string, data: AccountOwnAllParams): Promise<AccountOwnAllResponse> {
+  getAccountOwnAll(accountAddress: string, ercType: ErcType, showAttribute?: boolean): Promise<AccountOwnAllResponse> {
     if (isEmpty(accountAddress)) {
       return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('accountAddress')));
     }
 
-    if (isEmpty(data)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('data')));
+    if (isEmpty(ercType)) {
+      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('ercType')));
     }
 
-    if (isEmpty(data.erc_type)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('erc_type')));
-    }
+    const data: NsObject = {
+      erc_type: ercType,
+      show_attribute: showAttribute,
+    };
 
-    return nftscanGet<AccountOwnAllParams, AccountOwnAllResponse>(
+    return nftscanGet<NsObject, AccountOwnAllResponse>(
       this.config,
       `${NftscanConst.API.assets.accountOwnAll}${accountAddress}`,
       data,
@@ -143,11 +144,7 @@ export default class NftscanEvmAsset {
 
     const data = showAttribute ? { show_attribute: true } : undefined;
 
-    return nftscanGet<CommonAssetParams, Asset>(
-      this.config,
-      `${NftscanConst.API.assets.assets}${contractAddress}`,
-      data,
-    );
+    return nftscanGet<NsObject, Asset>(this.config, `${NftscanConst.API.assets.assets}${contractAddress}`, data);
   }
 
   /**

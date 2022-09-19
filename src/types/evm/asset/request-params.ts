@@ -23,21 +23,6 @@ export interface AccountOwnParams extends CommonAssetParams {
 }
 
 /**
- * The request parameters of api 'getAccountOwnAll'
- */
-export interface AccountOwnAllParams {
-  /**
-   * Can be erc721 or erc1155.
-   */
-  erc_type: ErcType;
-
-  /**
-   * Whether to load attribute data of the assets. Default is false
-   */
-  show_attribute?: boolean;
-}
-
-/**
  * The request parameters of api 'getAccountMint'
  */
 export interface AccountMintParams extends CommonAssetParams {
