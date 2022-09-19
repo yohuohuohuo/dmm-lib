@@ -46,7 +46,7 @@ export default class NftscanEvmAsset {
 
     return nftscanGet<AssetParams, CommonAssetResponse>(
       this.config,
-      `${NftscanConst.API.assets.getAssetsByAccount}${accountAddress}`,
+      `${NftscanConst.API.evm.assets.getAssetsByAccount}${accountAddress}`,
       params,
     );
   }
@@ -76,7 +76,7 @@ export default class NftscanEvmAsset {
 
     return nftscanGet<NsObject, AccountOwnAllResponse>(
       this.config,
-      `${NftscanConst.API.assets.getAllAssets}${accountAddress}`,
+      `${NftscanConst.API.evm.assets.getAllAssets}${accountAddress}`,
       params,
     );
   }
@@ -96,7 +96,7 @@ export default class NftscanEvmAsset {
 
     return nftscanGet<AccountMintParams, CommonAssetResponse>(
       this.config,
-      `${NftscanConst.API.assets.getAccountMinted}${accountAddress}`,
+      `${NftscanConst.API.evm.assets.getAccountMinted}${accountAddress}`,
       params,
     );
   }
@@ -119,7 +119,7 @@ export default class NftscanEvmAsset {
 
     return nftscanGet<CommonAssetParams, CommonAssetResponse>(
       this.config,
-      `${NftscanConst.API.assets.getAssets}${contractAddress}`,
+      `${NftscanConst.API.evm.assets.getAssets}${contractAddress}`,
       params,
     );
   }
@@ -144,7 +144,11 @@ export default class NftscanEvmAsset {
 
     const params = showAttribute ? { show_attribute: true } : undefined;
 
-    return nftscanGet<NsObject, Asset>(this.config, `${NftscanConst.API.assets.getAssets}${contractAddress}`, params);
+    return nftscanGet<NsObject, Asset>(
+      this.config,
+      `${NftscanConst.API.evm.assets.getAssets}${contractAddress}`,
+      params,
+    );
   }
 
   /**
@@ -176,7 +180,7 @@ export default class NftscanEvmAsset {
     };
     return nftscanPost<BatchQueryAssetsParams, Array<Asset>>(
       this.config,
-      NftscanConst.API.assets.queryAssetsInBatches,
+      NftscanConst.API.evm.assets.queryAssetsInBatches,
       params,
     );
   }
@@ -204,7 +208,7 @@ export default class NftscanEvmAsset {
 
     return nftscanPost<QueryAssetsByFiltersParams, CommonAssetResponse>(
       this.config,
-      NftscanConst.API.assets.queryAssetsByFilters,
+      NftscanConst.API.evm.assets.queryAssetsByFilters,
       params,
     );
   }
