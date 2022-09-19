@@ -22,6 +22,14 @@ export enum ErcType {
 }
 
 /**
+ * The sort type
+ */
+export enum SortType {
+  ASC = 'asc',
+  DESC = 'desc',
+}
+
+/**
  * NFTScan SDK's common object
  */
 export interface NsObject {

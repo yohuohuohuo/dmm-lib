@@ -39,3 +39,7 @@ export function missingParam(paramName: string) {
 export function invalidParam(paramName: string, extMsg?: string) {
   return `param '${paramName}' is invalid. ${extMsg || ''}`;
 }
+
+export function invalidLimitError(max: number) {
+  return Promise.reject(new NftscanError(NsError.PARAM_ERROR, invalidParam('limit', `capped at ${max}`)));
+}
