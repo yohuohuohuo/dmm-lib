@@ -32,12 +32,20 @@ export enum NsError {
   PARAM_ERROR = 'param_error',
 }
 
-export function missingParam(paramName: string) {
-  return `Missing request param '${paramName}'`;
+function missingParam(paramName: string) {
+  return `The param '${paramName}' is required.`;
 }
 
-export function invalidParam(paramName: string, extMsg?: string) {
-  return `param '${paramName}' is invalid. ${extMsg || ''}`;
+function invalidParam(paramName: string, extMsg?: string) {
+  return `The param '${paramName}' is invalid. ${extMsg || ''}`;
+}
+
+export function invalidParamError(paramName: string, extMsg?: string) {
+  return Promise.reject(new NftscanError(NsError.PARAM_ERROR, invalidParam(paramName, extMsg)));
+}
+
+export function missingParamError(paramName: string) {
+  return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam(paramName)));
 }
 
 export function invalidLimitError(max: number) {

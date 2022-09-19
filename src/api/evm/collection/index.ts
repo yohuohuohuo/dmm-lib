@@ -4,7 +4,7 @@ import {
   QueryCollectionsByRankingParams,
 } from '../../../types/evm/collection/request-params';
 import { Collection } from '../../../types/evm/collection/response-data';
-import { invalidLimitError, invalidParam, missingParam, NftscanError, NsError } from '../../../types/nftscan-error';
+import { invalidLimitError, missingParamError } from '../../../types/nftscan-error';
 import { NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
@@ -26,7 +26,7 @@ export default class NftscanEvmCollection extends BaseApi {
    */
   getCollectionsByContract(contractAddress: string): Promise<Collection> {
     if (isEmpty(contractAddress)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('contractAddress')));
+      return missingParamError('contractAddress');
     }
 
     return nftscanGet<NsObject, Collection>(

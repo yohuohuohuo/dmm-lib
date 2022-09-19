@@ -8,7 +8,7 @@ import {
   QueryAssetsByFiltersParams,
 } from '../../../types/evm/asset/request-params';
 import { AccountOwnAllResponse, Asset, CommonAssetResponse } from '../../../types/evm/asset/response-data';
-import { invalidParam, missingParam, NftscanError, NsError } from '../../../types/nftscan-error';
+import { invalidParamError, missingParamError } from '../../../types/nftscan-error';
 import { ErcType, NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
@@ -28,15 +28,15 @@ export default class NftscanEvmAsset extends BaseApi {
    */
   getAssetsByAccount(accountAddress: string, params: AssetParams): Promise<CommonAssetResponse> {
     if (isEmpty(accountAddress)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('accountAddress')));
+      return missingParamError('accountAddress');
     }
 
     if (isEmpty(params)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('params')));
+      return missingParamError('params');
     }
 
     if (isEmpty(params.contract_address) && isEmpty(params.erc_type)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('erc_type')));
+      return missingParamError('erc_type');
     }
 
     return nftscanGet<AssetParams, CommonAssetResponse>(
@@ -57,11 +57,11 @@ export default class NftscanEvmAsset extends BaseApi {
    */
   getAllAssets(accountAddress: string, ercType: ErcType, showAttribute?: boolean): Promise<AccountOwnAllResponse> {
     if (isEmpty(accountAddress)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('accountAddress')));
+      return missingParamError('accountAddress');
     }
 
     if (isEmpty(ercType)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('ercType')));
+      return missingParamError('ercType');
     }
 
     const params: NsObject = {
@@ -86,7 +86,7 @@ export default class NftscanEvmAsset extends BaseApi {
    */
   getAccountMinted(accountAddress: string, params?: AccountMintParams): Promise<CommonAssetResponse> {
     if (isEmpty(accountAddress)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('accountAddress')));
+      return missingParamError('accountAddress');
     }
 
     return nftscanGet<AccountMintParams, CommonAssetResponse>(
@@ -109,7 +109,7 @@ export default class NftscanEvmAsset extends BaseApi {
    */
   getAssetsByContract(contractAddress: string, params?: CommonAssetParams): Promise<CommonAssetResponse> {
     if (isEmpty(contractAddress)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('contractAddress')));
+      return missingParamError('contractAddress');
     }
 
     return nftscanGet<CommonAssetParams, CommonAssetResponse>(
@@ -130,11 +130,11 @@ export default class NftscanEvmAsset extends BaseApi {
    */
   getAssetsByContractAndTokenId(contractAddress: string, tokenId: string, showAttribute?: boolean): Promise<Asset> {
     if (isEmpty(contractAddress)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('contractAddress')));
+      return missingParamError('contractAddress');
     }
 
     if (isEmpty(tokenId)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('tokenId')));
+      return missingParamError('tokenId');
     }
 
     const params = showAttribute ? { show_attribute: true } : undefined;
@@ -159,11 +159,11 @@ export default class NftscanEvmAsset extends BaseApi {
    */
   queryAssetsInBatches(list: Array<BatchQueryAssetsListItemParams>, showAttribute?: boolean): Promise<Array<Asset>> {
     if (isEmpty(list)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('list')));
+      return missingParamError('list');
     }
 
     if (list.length > 50) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, invalidParam('list', 'Maximum size is 50')));
+      return invalidParamError('list', 'Maximum size is 50');
     }
 
     const params: BatchQueryAssetsParams = {
@@ -191,9 +191,7 @@ export default class NftscanEvmAsset extends BaseApi {
     const { contract_address_list: contractAddressList } = params;
 
     if (contractAddressList && contractAddressList.length > 50) {
-      return Promise.reject(
-        new NftscanError(NsError.PARAM_ERROR, invalidParam('contract_address_list', 'Maximum size is 50')),
-      );
+      return invalidParamError('contract_address_list', 'Maximum size is 50');
     }
 
     return nftscanPost<QueryAssetsByFiltersParams, CommonAssetResponse>(

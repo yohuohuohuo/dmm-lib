@@ -1,7 +1,7 @@
 import { nftscanGet, nftscanPost } from '../../../http/nftscan.http';
 import { QueryTransactionsByFiltersParams, TransactionParams } from '../../../types/evm/transaction/request-params';
 import { CommonTransactionResponse, Transaction } from '../../../types/evm/transaction/response-data';
-import { invalidParam, missingParam, NftscanError, NsError } from '../../../types/nftscan-error';
+import { invalidParamError, missingParamError } from '../../../types/nftscan-error';
 import { BaseNftscanRequestParam, NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
@@ -24,14 +24,14 @@ export default class NftscanEvmTransaction extends BaseApi {
    */
   getTransactionsByAccount(accountAddress: string, params?: TransactionParams): Promise<CommonTransactionResponse> {
     if (isEmpty(accountAddress)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('accountAddress')));
+      return missingParamError('accountAddress');
     }
 
     if (params) {
       const { token_id: TokenId, contract_address: contractAddress } = params;
 
       if (!isEmpty(TokenId) && isEmpty(contractAddress)) {
-        return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('contract_address')));
+        return missingParamError('contract_address');
       }
     }
 
@@ -58,7 +58,7 @@ export default class NftscanEvmTransaction extends BaseApi {
     params: BaseNftscanRequestParam,
   ): Promise<CommonTransactionResponse> {
     if (isEmpty(contractAddress)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('contractAddress')));
+      return missingParamError('contractAddress');
     }
 
     return nftscanGet<BaseNftscanRequestParam, CommonTransactionResponse>(
@@ -83,14 +83,14 @@ export default class NftscanEvmTransaction extends BaseApi {
   getTransactionsByContractAndTokenId(
     contractAddress: string,
     tokenId: string,
-    params: BaseNftscanRequestParam,
+    params?: BaseNftscanRequestParam,
   ): Promise<CommonTransactionResponse> {
     if (isEmpty(contractAddress)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('contractAddress')));
+      return missingParamError('contractAddress');
     }
 
     if (isEmpty(tokenId)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('tokenId')));
+      return missingParamError('tokenId');
     }
 
     return nftscanGet<BaseNftscanRequestParam, CommonTransactionResponse>(
@@ -111,9 +111,9 @@ export default class NftscanEvmTransaction extends BaseApi {
    * @param params The query params {@link BaseNftscanRequestParam}
    * @returns Promise<{@link CommonTransactionResponse}>
    */
-  getTransactionsByToAddress(toAddress: string, params: BaseNftscanRequestParam): Promise<CommonTransactionResponse> {
+  getTransactionsByToAddress(toAddress: string, params?: BaseNftscanRequestParam): Promise<CommonTransactionResponse> {
     if (isEmpty(toAddress)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('toAddress')));
+      return missingParamError('toAddress');
     }
 
     return nftscanGet<BaseNftscanRequestParam, CommonTransactionResponse>(
@@ -137,9 +137,7 @@ export default class NftscanEvmTransaction extends BaseApi {
     const { contract_address_list: contractAddressList } = params;
 
     if (contractAddressList && contractAddressList.length > 50) {
-      return Promise.reject(
-        new NftscanError(NsError.PARAM_ERROR, invalidParam('contract_address_list', 'Maximum size is 50')),
-      );
+      return invalidParamError('contract_address_list', 'Maximum size is 50');
     }
 
     return nftscanPost<QueryTransactionsByFiltersParams, CommonTransactionResponse>(
@@ -161,11 +159,11 @@ export default class NftscanEvmTransaction extends BaseApi {
    */
   queryTransactionsByTxHashList(txHashList: Array<string>): Promise<Array<Transaction>> {
     if (isEmpty(txHashList)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('txHashList')));
+      return missingParamError('txHashList');
     }
 
     if (txHashList.length > 50) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, invalidParam('txHashList', 'Maximum size is 50')));
+      return invalidParamError('txHashList', 'Maximum size is 50');
     }
 
     const params: NsObject = { tx_hash_list: txHashList };
