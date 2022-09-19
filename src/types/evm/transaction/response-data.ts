@@ -1,3 +1,5 @@
+import { BaseNFTScanResponseData } from '../../nftscan-type';
+
 /**
  * The parameters of Transaction, which represents one transaction for an NFT asset on the blockchain.
  * {@link https://docs.nftscan.com/nftscan/Transaction%20Model}
@@ -117,4 +119,11 @@ export interface Transaction {
    * The trade value of the transaction in Hex
    */
   trade_value: string;
+}
+
+/**
+ * The common response parameters of transaction related api
+ */
+export interface CommonTransactionResponse extends BaseNFTScanResponseData {
+  content: Array<Transaction>;
 }

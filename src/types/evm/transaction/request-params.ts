@@ -1,3 +1,36 @@
-export interface Example {
-  param: string;
+import { BaseNftscanRequestParam } from '../../nftscan-type';
+
+/**
+ * The request parameters of api 'getTransactionsByAccount'
+ */
+export interface TransactionParams extends BaseNftscanRequestParam {
+  /**
+   * The NFT token ID. Can be in Hex or in Number
+   */
+  token_id?: string;
+
+  /**
+   * The NFT contract address for the assets
+   */
+  contract_address?: string;
+}
+
+/**
+ * The request parameters of api 'queryTransactionsByFilters'
+ */
+export interface QueryTransactionsByFiltersParams extends BaseNftscanRequestParam {
+  /**
+   * Filter of end block number
+   */
+  block_number_end: number;
+
+  /**
+   * Filter of start block number
+   */
+  block_number_start: number;
+
+  /**
+   * List of contract address. Maximum size is 50.
+   */
+  contract_address_list: Array<string>;
 }

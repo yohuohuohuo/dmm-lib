@@ -144,7 +144,7 @@ export interface Asset {
 }
 
 /**
- * The common response parameters of asset's api
+ * The common response parameters of asset related api
  */
 export interface CommonAssetResponse extends BaseNFTScanResponseData {
   content: Array<Asset>;

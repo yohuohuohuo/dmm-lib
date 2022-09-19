@@ -7,22 +7,17 @@ import {
   CommonAssetParams,
   QueryAssetsByFiltersParams,
 } from '../../../types/evm/asset/request-params';
-import { AccountOwnAllResponse, CommonAssetResponse, Asset } from '../../../types/evm/asset/response-data';
+import { AccountOwnAllResponse, Asset, CommonAssetResponse } from '../../../types/evm/asset/response-data';
 import { invalidParam, missingParam, NftscanError, NsError } from '../../../types/nftscan-error';
-import { ErcType, NftscanConfig, NsObject } from '../../../types/nftscan-type';
+import { ErcType, NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
+import BaseApi from '../../base-api';
 
 /**
  * Asset related API
  */
-export default class NftscanEvmAsset {
-  config: NftscanConfig;
-
-  constructor(config: NftscanConfig) {
-    this.config = config;
-  }
-
+export default class NftscanEvmAsset extends BaseApi {
   /**
    * Retrieve assets owned by an account.
    * - This endpoint returns a set of NFTs owned by an account address.
@@ -85,7 +80,7 @@ export default class NftscanEvmAsset {
    * Retrieve assets minted by an account.
    * - This endpoint returns a set of NFTs minted by an account address.
    * - details: {@link https://docs.nftscan.com/nftscan/getAccountMintedUsingGET}
-   * @param accountAddress The address of the owner of the assets
+   * @param accountAddress The address of the minter of the assets
    * @param params The query params {@link AccountMintParams}
    * @returns Promise<{@link CommonAssetResponse}>
    */
@@ -158,24 +153,21 @@ export default class NftscanEvmAsset {
    * Retrieve assets by list of contract address and token ID.
    * - This endpoint returns a set of NFTs according to the search list in the request body.
    * - details: {@link https://docs.nftscan.com/nftscan/getAssetsByListUsingPOST_1}
-   * @param filterList List of contract address with token ID. Maximum size is 50.
+   * @param list List of contract address with token ID. Maximum size is 50.
    * @param showAttribute Whether to load attribute data of the assets. Default is false
    * @returns Promise<Array<{@link Asset}>>
    */
-  queryAssetsInBatches(
-    filterList: Array<BatchQueryAssetsListItemParams>,
-    showAttribute?: boolean,
-  ): Promise<Array<Asset>> {
-    if (isEmpty(filterList)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('filterList')));
+  queryAssetsInBatches(list: Array<BatchQueryAssetsListItemParams>, showAttribute?: boolean): Promise<Array<Asset>> {
+    if (isEmpty(list)) {
+      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('list')));
     }
 
-    if (filterList.length > 50) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, invalidParam('filterList', 'Maximum size is 50')));
+    if (list.length > 50) {
+      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, invalidParam('list', 'Maximum size is 50')));
     }
 
     const params: BatchQueryAssetsParams = {
-      contract_address_with_token_id_list: filterList,
+      contract_address_with_token_id_list: list,
       show_attribute: showAttribute,
     };
     return nftscanPost<BatchQueryAssetsParams, Array<Asset>>(
@@ -196,11 +188,9 @@ export default class NftscanEvmAsset {
    * @returns Promise<{@link CommonAssetResponse}>
    */
   queryAssetsByFilters(params: QueryAssetsByFiltersParams): Promise<CommonAssetResponse> {
-    if (isEmpty(params)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('params')));
-    }
+    const { contract_address_list: contractAddressList } = params;
 
-    if (params.contract_address_list && params.contract_address_list.length > 50) {
+    if (contractAddressList && contractAddressList.length > 50) {
       return Promise.reject(
         new NftscanError(NsError.PARAM_ERROR, invalidParam('contract_address_list', 'Maximum size is 50')),
       );
