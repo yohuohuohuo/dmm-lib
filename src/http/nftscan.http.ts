@@ -22,7 +22,7 @@ function apiChainError() {
 
 /**
  * Configure the axios interceptor
- * @param nftscanConfig NFTScan SDK Initialization parameters
+ * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanConfig}
  */
 export function initHttpConfig(nftscanConfig: NftscanConfig) {
   const { apiKey, chain } = nftscanConfig;
@@ -79,12 +79,12 @@ export function initHttpConfig(nftscanConfig: NftscanConfig) {
 
 /**
  * NFTScan SDK's wrapper function of send get http request
- * @param nftscanConfig NFTScan SDK Initialization parameters
- * @param url api url
- * @param data post data
+ * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanConfig}
+ * @param url The api url
+ * @param params The axios get params
  * @returns Promise
  */
-export function nftscanGet<T, V>(nftscanConfig: NftscanConfig, url: string, data?: T): Promise<V> {
+export function nftscanGet<T, V>(nftscanConfig: NftscanConfig, url: string, params?: T): Promise<V> {
   const { apiKey, chain } = nftscanConfig;
   if (isEmpty(apiKey)) {
     return apiKeyError();
@@ -95,15 +95,15 @@ export function nftscanGet<T, V>(nftscanConfig: NftscanConfig, url: string, data
   }
 
   return axios.get(url, {
-    params: data,
+    params,
   });
 }
 
 /**
  * NFTScan SDK's wrapper function of send post http request
- * @param nftscanConfig NFTScan SDK Initialization parameters
- * @param url api url
- * @param data post data
+ * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanConfig}
+ * @param url The api url
+ * @param data The axios post data
  * @returns Promise
  */
 export function nftscanPost<T, V>(nftscanConfig: NftscanConfig, url: string, data?: T): Promise<V> {

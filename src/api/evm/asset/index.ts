@@ -1,7 +1,7 @@
 import { nftscanGet, nftscanPost } from '../../../http/nftscan.http';
 import {
   AccountMintParams,
-  AccountOwnParams,
+  AssetParams,
   BatchQueryAssetsListItemParams,
   BatchQueryAssetsParams,
   CommonAssetParams,
@@ -28,26 +28,26 @@ export default class NftscanEvmAsset {
    * - This endpoint returns a set of NFTs owned by an account address.
    * - details: {@link https://docs.nftscan.com/nftscan/getAccountNftAssetsUsingGET}
    * @param accountAddress The address of the owner of the assets
-   * @param data The query params {@link AccountOwnParams}
+   * @param params The query params {@link AssetParams}
    * @returns Promise<{@link CommonAssetResponse}>
    */
-  getAccountOwn(accountAddress: string, data: AccountOwnParams): Promise<CommonAssetResponse> {
+  getAssetsByAccount(accountAddress: string, params: AssetParams): Promise<CommonAssetResponse> {
     if (isEmpty(accountAddress)) {
       return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('accountAddress')));
     }
 
-    if (isEmpty(data)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('data')));
+    if (isEmpty(params)) {
+      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('params')));
     }
 
-    if (isEmpty(data.contract_address) && isEmpty(data.erc_type)) {
+    if (isEmpty(params.contract_address) && isEmpty(params.erc_type)) {
       return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('erc_type')));
     }
 
-    return nftscanGet<AccountOwnParams, CommonAssetResponse>(
+    return nftscanGet<AssetParams, CommonAssetResponse>(
       this.config,
-      `${NftscanConst.API.assets.accountOwn}${accountAddress}`,
-      data,
+      `${NftscanConst.API.assets.getAssetsByAccount}${accountAddress}`,
+      params,
     );
   }
 
@@ -60,7 +60,7 @@ export default class NftscanEvmAsset {
    * @param showAttribute Whether to load attribute data of the asset. Default is false
    * @returns Promise<{@link AccountOwnAllResponse}>
    */
-  getAccountOwnAll(accountAddress: string, ercType: ErcType, showAttribute?: boolean): Promise<AccountOwnAllResponse> {
+  getAllAssets(accountAddress: string, ercType: ErcType, showAttribute?: boolean): Promise<AccountOwnAllResponse> {
     if (isEmpty(accountAddress)) {
       return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('accountAddress')));
     }
@@ -69,15 +69,15 @@ export default class NftscanEvmAsset {
       return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('ercType')));
     }
 
-    const data: NsObject = {
+    const params: NsObject = {
       erc_type: ercType,
       show_attribute: showAttribute,
     };
 
     return nftscanGet<NsObject, AccountOwnAllResponse>(
       this.config,
-      `${NftscanConst.API.assets.accountOwnAll}${accountAddress}`,
-      data,
+      `${NftscanConst.API.assets.getAllAssets}${accountAddress}`,
+      params,
     );
   }
 
@@ -86,18 +86,18 @@ export default class NftscanEvmAsset {
    * - This endpoint returns a set of NFTs minted by an account address.
    * - details: {@link https://docs.nftscan.com/nftscan/getAccountMintedUsingGET}
    * @param accountAddress The address of the owner of the assets
-   * @param data The query params {@link AccountMintParams}
+   * @param params The query params {@link AccountMintParams}
    * @returns Promise<{@link CommonAssetResponse}>
    */
-  getAccountMint(accountAddress: string, data?: AccountMintParams): Promise<CommonAssetResponse> {
+  getAccountMinted(accountAddress: string, params?: AccountMintParams): Promise<CommonAssetResponse> {
     if (isEmpty(accountAddress)) {
       return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('accountAddress')));
     }
 
     return nftscanGet<AccountMintParams, CommonAssetResponse>(
       this.config,
-      `${NftscanConst.API.assets.accountMint}${accountAddress}`,
-      data,
+      `${NftscanConst.API.assets.getAccountMinted}${accountAddress}`,
+      params,
     );
   }
 
@@ -109,18 +109,18 @@ export default class NftscanEvmAsset {
    * - This endpoint returns a set of NFTs that belong to an NFT contract address. The NFTs are sorted by token_id with ascending direction.
    * - details: {@link https://docs.nftscan.com/nftscan/getAssetsByContractAddressUsingGET}
    * @param contractAddress The NFT contract address for the assets
-   * @param data The query params {@link CommonAssetParams}
+   * @param params The query params {@link CommonAssetParams}
    * @returns Promise<{@link CommonAssetResponse}>
    */
-  getAssetsByContract(contractAddress: string, data?: CommonAssetParams): Promise<CommonAssetResponse> {
+  getAssetsByContract(contractAddress: string, params?: CommonAssetParams): Promise<CommonAssetResponse> {
     if (isEmpty(contractAddress)) {
       return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('contractAddress')));
     }
 
     return nftscanGet<CommonAssetParams, CommonAssetResponse>(
       this.config,
-      `${NftscanConst.API.assets.assets}${contractAddress}`,
-      data,
+      `${NftscanConst.API.assets.getAssets}${contractAddress}`,
+      params,
     );
   }
 
@@ -142,9 +142,9 @@ export default class NftscanEvmAsset {
       return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('tokenId')));
     }
 
-    const data = showAttribute ? { show_attribute: true } : undefined;
+    const params = showAttribute ? { show_attribute: true } : undefined;
 
-    return nftscanGet<NsObject, Asset>(this.config, `${NftscanConst.API.assets.assets}${contractAddress}`, data);
+    return nftscanGet<NsObject, Asset>(this.config, `${NftscanConst.API.assets.getAssets}${contractAddress}`, params);
   }
 
   /**
@@ -158,7 +158,7 @@ export default class NftscanEvmAsset {
    * @param showAttribute Whether to load attribute data of the assets. Default is false
    * @returns Promise<Array<{@link Asset}>>
    */
-  queryAssetsByBatch(
+  queryAssetsInBatches(
     filterList: Array<BatchQueryAssetsListItemParams>,
     showAttribute?: boolean,
   ): Promise<Array<Asset>> {
@@ -170,11 +170,15 @@ export default class NftscanEvmAsset {
       return Promise.reject(new NftscanError(NsError.PARAM_ERROR, invalidParam('filterList', 'Maximum size is 50')));
     }
 
-    const data: BatchQueryAssetsParams = {
+    const params: BatchQueryAssetsParams = {
       contract_address_with_token_id_list: filterList,
       show_attribute: showAttribute,
     };
-    return nftscanPost<BatchQueryAssetsParams, Array<Asset>>(this.config, NftscanConst.API.assets.assetsBatch, data);
+    return nftscanPost<BatchQueryAssetsParams, Array<Asset>>(
+      this.config,
+      NftscanConst.API.assets.queryAssetsInBatches,
+      params,
+    );
   }
 
   /**
@@ -184,15 +188,15 @@ export default class NftscanEvmAsset {
    * Retrieve assets with filters
    * - This endpoint returns a list of NFT assets by applying search filters in the request body. The assets are sorted by nftscan_id with ascending direction.
    * - details: {@link https://docs.nftscan.com/nftscan/getAssetsByListUsingPOST}
-   * @param data The query params {@link QueryAssetsByFiltersParams}
+   * @param params The query params {@link QueryAssetsByFiltersParams}
    * @returns Promise<{@link CommonAssetResponse}>
    */
-  queryAssetsByFilters(data: QueryAssetsByFiltersParams): Promise<CommonAssetResponse> {
-    if (isEmpty(data)) {
-      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('data')));
+  queryAssetsByFilters(params: QueryAssetsByFiltersParams): Promise<CommonAssetResponse> {
+    if (isEmpty(params)) {
+      return Promise.reject(new NftscanError(NsError.PARAM_ERROR, missingParam('params')));
     }
 
-    if (data.contract_address_list && data.contract_address_list.length > 50) {
+    if (params.contract_address_list && params.contract_address_list.length > 50) {
       return Promise.reject(
         new NftscanError(NsError.PARAM_ERROR, invalidParam('contract_address_list', 'Maximum size is 50')),
       );
@@ -200,8 +204,8 @@ export default class NftscanEvmAsset {
 
     return nftscanPost<QueryAssetsByFiltersParams, CommonAssetResponse>(
       this.config,
-      NftscanConst.API.assets.assetsFilters,
-      data,
+      NftscanConst.API.assets.queryAssetsByFilters,
+      params,
     );
   }
 }

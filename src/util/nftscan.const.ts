@@ -17,12 +17,13 @@ export default class NftscanConst {
    */
   static readonly API = {
     assets: {
-      accountOwn: '/v2/account/own/',
-      accountOwnAll: '/v2/account/own/all/',
-      accountMint: '/v2/account/mint/',
-      assets: '/v2/assets/',
-      assetsBatch: '/v2/assets/batch',
-      assetsFilters: '/v2/assets/filters',
+      getAssetsByAccount: '/v2/account/own/',
+      getAllAssets: '/v2/account/own/all/',
+      getAccountMinted: '/v2/account/mint/',
+      getAssets: '/v2/assets/',
+      queryAssetsInBatches: '/v2/assets/batch',
+      queryAssetsByFilters: '/v2/assets/filters',
     },
+    transaction: {},
   };
 }

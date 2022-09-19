@@ -151,7 +151,7 @@ export interface CommonAssetResponse extends BaseNFTScanResponseData {
 }
 
 /**
- * The response parameters of api 'getAccountOwnAll'
+ * The response parameters of api 'getAllAssets'
  */
 export interface AccountOwnAllResponse {
   /**

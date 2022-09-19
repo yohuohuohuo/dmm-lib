@@ -8,9 +8,9 @@ export interface CommonAssetParams extends BaseNftscanRequestParam {
 }
 
 /**
- * The request parameters of api 'getAccountOwn'
+ * The request parameters of api 'getAssetsByAccount'
  */
-export interface AccountOwnParams extends CommonAssetParams {
+export interface AssetParams extends CommonAssetParams {
   /**
    * Can be erc721 or erc1155. Required if contract_address is null
    */
@@ -23,7 +23,7 @@ export interface AccountOwnParams extends CommonAssetParams {
 }
 
 /**
- * The request parameters of api 'getAccountMint'
+ * The request parameters of api 'getAccountMinted'
  */
 export interface AccountMintParams extends CommonAssetParams {
   /**
@@ -48,7 +48,7 @@ export interface BatchQueryAssetsListItemParams {
 }
 
 /**
- * The request parameters of api 'queryAssetsByBatch'
+ * The request parameters of api 'queryAssetsInBatches'
  */
 export interface BatchQueryAssetsParams {
   /**
