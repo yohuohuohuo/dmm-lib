@@ -1,6 +1,6 @@
-import { BaseNftscanRequestParam, ErcType } from '../../nftscan-type';
+import { BaseNsPaginationReqParam, ErcType } from '../../nftscan-type';
 
-export interface CommonAssetParams extends BaseNftscanRequestParam {
+export interface CommonAssetParams extends BaseNsPaginationReqParam {
   /**
    * Whether to load attribute data of the assets. Default is false
    */

@@ -1,4 +1,4 @@
-import { SortType } from '../../nftscan-type';
+import { SortDirection } from '../../nftscan-type';
 
 /**
  * The request parameters of api 'getCollectionsByRanking'
@@ -12,7 +12,7 @@ export interface QueryCollectionsByRankingParams {
   /**
    * Can be asc or desc. desc for default
    */
-  sort_direction: SortType;
+  sort_direction: SortDirection;
 
   /**
    * Result size. Defaults to 100, capped at 1000

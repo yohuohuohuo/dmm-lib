@@ -1,4 +1,4 @@
-import { BaseNFTScanResponseData } from '../../nftscan-type';
+import { BaseNsPaginationResData } from '../../nftscan-type';
 
 interface Attributes {
   /**
@@ -146,14 +146,14 @@ export interface Asset {
 /**
  * The common response parameters of asset related api
  */
-export interface CommonAssetResponse extends BaseNFTScanResponseData {
+export interface CommonAssetResponse extends BaseNsPaginationResData {
   content: Array<Asset>;
 }
 
 /**
  * The response parameters of api 'getAllAssets'
  */
-export interface AccountOwnAllResponse {
+export interface QueryAllAssetsResponse {
   /**
    * List of Asset Model
    */

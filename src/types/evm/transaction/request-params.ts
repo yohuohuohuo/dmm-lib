@@ -1,9 +1,9 @@
-import { BaseNftscanRequestParam } from '../../nftscan-type';
+import { BaseNsPaginationReqParam } from '../../nftscan-type';
 
 /**
  * The request parameters of api 'getTransactionsByAccount'
  */
-export interface TransactionParams extends BaseNftscanRequestParam {
+export interface TransactionParams extends BaseNsPaginationReqParam {
   /**
    * The NFT token ID. Can be in Hex or in Number
    */
@@ -18,7 +18,7 @@ export interface TransactionParams extends BaseNftscanRequestParam {
 /**
  * The request parameters of api 'queryTransactionsByFilters'
  */
-export interface QueryTransactionsByFiltersParams extends BaseNftscanRequestParam {
+export interface QueryTransactionsByFiltersParams extends BaseNsPaginationReqParam {
   /**
    * Filter of end block number
    */

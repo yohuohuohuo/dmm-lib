@@ -2,7 +2,7 @@ import { nftscanGet, nftscanPost } from '../../../http/nftscan.http';
 import { QueryTransactionsByFiltersParams, TransactionParams } from '../../../types/evm/transaction/request-params';
 import { CommonTransactionResponse, Transaction } from '../../../types/evm/transaction/response-data';
 import { invalidParamError, missingParamError } from '../../../types/nftscan-error';
-import { BaseNftscanRequestParam, NsObject } from '../../../types/nftscan-type';
+import { BaseNsPaginationReqParam, NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
 import BaseApi from '../../base-api';
@@ -50,18 +50,18 @@ export default class NftscanEvmTransaction extends BaseApi {
    * - This endpoint returns a list of NFT transactions for an NFT contract address. The transactions are sorted by timestamp with descending direction.
    * - details: {@link https://docs.nftscan.com/nftscan/getTransactionsByContractAddressUsingGET}
    * @param contractAddress The NFT contract address
-   * @param params The query params {@link BaseNftscanRequestParam}
+   * @param params The query params {@link BaseNsPaginationReqParam}
    * @returns Promise<{@link CommonTransactionResponse}>
    */
   getTransactionsByContract(
     contractAddress: string,
-    params: BaseNftscanRequestParam,
+    params: BaseNsPaginationReqParam,
   ): Promise<CommonTransactionResponse> {
     if (isEmpty(contractAddress)) {
       return missingParamError('contractAddress');
     }
 
-    return nftscanGet<BaseNftscanRequestParam, CommonTransactionResponse>(
+    return nftscanGet<BaseNsPaginationReqParam, CommonTransactionResponse>(
       this.config,
       `${NftscanConst.API.evm.transaction.getTransactions}${contractAddress}`,
       params,
@@ -77,13 +77,13 @@ export default class NftscanEvmTransaction extends BaseApi {
    * - details: {@link https://docs.nftscan.com/nftscan/getTransactionByContractAddressAndTokenIdUsingGET}
    * @param contractAddress The NFT contract address
    * @param tokenId The NFT token ID. Can be in Hex or in Number
-   * @param params The query params {@link BaseNftscanRequestParam}
+   * @param params The query params {@link BaseNsPaginationReqParam}
    * @returns Promise<{@link CommonTransactionResponse}>
    */
   getTransactionsByContractAndTokenId(
     contractAddress: string,
     tokenId: string,
-    params?: BaseNftscanRequestParam,
+    params?: BaseNsPaginationReqParam,
   ): Promise<CommonTransactionResponse> {
     if (isEmpty(contractAddress)) {
       return missingParamError('contractAddress');
@@ -93,7 +93,7 @@ export default class NftscanEvmTransaction extends BaseApi {
       return missingParamError('tokenId');
     }
 
-    return nftscanGet<BaseNftscanRequestParam, CommonTransactionResponse>(
+    return nftscanGet<BaseNsPaginationReqParam, CommonTransactionResponse>(
       this.config,
       `${NftscanConst.API.evm.transaction.getTransactions}${contractAddress}/${tokenId}`,
       params,
@@ -108,15 +108,15 @@ export default class NftscanEvmTransaction extends BaseApi {
    * - This endpoint returns a list of NFT transactions filtered by the param to of the transaction. The transactions are sorted by timestamp with descending direction.
    * - details: {@link https://docs.nftscan.com/nftscan/getTransactionByTxToUsingGET}
    * @param toAddress The to address of the transaction
-   * @param params The query params {@link BaseNftscanRequestParam}
+   * @param params The query params {@link BaseNsPaginationReqParam}
    * @returns Promise<{@link CommonTransactionResponse}>
    */
-  getTransactionsByToAddress(toAddress: string, params?: BaseNftscanRequestParam): Promise<CommonTransactionResponse> {
+  getTransactionsByToAddress(toAddress: string, params?: BaseNsPaginationReqParam): Promise<CommonTransactionResponse> {
     if (isEmpty(toAddress)) {
       return missingParamError('toAddress');
     }
 
-    return nftscanGet<BaseNftscanRequestParam, CommonTransactionResponse>(
+    return nftscanGet<BaseNsPaginationReqParam, CommonTransactionResponse>(
       this.config,
       `${NftscanConst.API.evm.transaction.getTransactionsByToAddress}${toAddress}`,
       params,

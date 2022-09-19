@@ -7,7 +7,7 @@ import {
   CommonAssetParams,
   QueryAssetsByFiltersParams,
 } from '../../../types/evm/asset/request-params';
-import { AccountOwnAllResponse, Asset, CommonAssetResponse } from '../../../types/evm/asset/response-data';
+import { QueryAllAssetsResponse, Asset, CommonAssetResponse } from '../../../types/evm/asset/response-data';
 import { invalidParamError, missingParamError } from '../../../types/nftscan-error';
 import { ErcType, NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
@@ -53,9 +53,9 @@ export default class NftscanEvmAsset extends BaseApi {
    * @param accountAddress The address of the owner of the assets
    * @param ercType Can be erc721 or erc1155.
    * @param showAttribute Whether to load attribute data of the asset. Default is false
-   * @returns Promise<{@link AccountOwnAllResponse}>
+   * @returns Promise<{@link QueryAllAssetsResponse}>
    */
-  getAllAssets(accountAddress: string, ercType: ErcType, showAttribute?: boolean): Promise<AccountOwnAllResponse> {
+  getAllAssets(accountAddress: string, ercType: ErcType, showAttribute?: boolean): Promise<QueryAllAssetsResponse> {
     if (isEmpty(accountAddress)) {
       return missingParamError('accountAddress');
     }
@@ -69,7 +69,7 @@ export default class NftscanEvmAsset extends BaseApi {
       show_attribute: showAttribute,
     };
 
-    return nftscanGet<NsObject, AccountOwnAllResponse>(
+    return nftscanGet<NsObject, QueryAllAssetsResponse>(
       this.config,
       `${NftscanConst.API.evm.assets.getAllAssets}${accountAddress}`,
       params,

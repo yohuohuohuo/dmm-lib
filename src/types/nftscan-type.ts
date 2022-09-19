@@ -24,9 +24,27 @@ export enum ErcType {
 /**
  * The sort type
  */
-export enum SortType {
+export enum SortDirection {
   ASC = 'asc',
   DESC = 'desc',
+}
+
+export enum RangeType {
+  m15 = '15m',
+  m30 = '30m',
+  h1 = '1h',
+  h4 = '4h',
+  h6 = '6h',
+  h12 = '12h',
+  d1 = '1d',
+  d3 = '3d',
+  d7 = '7d',
+  d30 = '30d',
+  d90 = '90d',
+  mth1 = '1mth',
+  mth3 = '3mth',
+  y1 = '1y',
+  all = 'all',
 }
 
 /**
@@ -53,9 +71,9 @@ export interface NftscanConfig {
 }
 
 /**
- * Base properties in NFTScan's HTTP request params
+ * Base pagination properties in NFTScan's HTTP request params
  */
-export interface BaseNftscanRequestParam {
+export interface BaseNsPaginationReqParam {
   /**
    * A cursor to retrieve the next page
    */
@@ -68,9 +86,9 @@ export interface BaseNftscanRequestParam {
 }
 
 /**
- * Base properties in NFTScan's HTTP response data
+ * Base pagination properties in NFTScan's HTTP response data
  */
-export interface BaseNFTScanResponseData {
+export interface BaseNsPaginationResData {
   /**
    * The next cursor to be supplied as a query param to retrieve the next page
    */

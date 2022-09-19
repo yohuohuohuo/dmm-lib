@@ -1,4 +1,4 @@
-import { BaseNFTScanResponseData } from '../../nftscan-type';
+import { BaseNsPaginationResData } from '../../nftscan-type';
 
 /**
  * The parameters of Transaction, which represents one transaction for an NFT asset on the blockchain.
@@ -124,6 +124,6 @@ export interface Transaction {
 /**
  * The common response parameters of transaction related api
  */
-export interface CommonTransactionResponse extends BaseNFTScanResponseData {
+export interface CommonTransactionResponse extends BaseNsPaginationResData {
   content: Array<Transaction>;
 }
