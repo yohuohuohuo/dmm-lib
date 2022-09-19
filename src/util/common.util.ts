@@ -7,7 +7,7 @@ export function isEmpty(obj: unknown): boolean {
     return true;
   }
 
-  const contentStr = JSON.stringify(obj);
+  const contentStr = typeof obj === 'string' ? obj : JSON.stringify(obj);
   return contentStr.length === 0 || contentStr === '{}' || contentStr === '[]';
 }
 

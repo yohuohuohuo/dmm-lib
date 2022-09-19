@@ -5,6 +5,21 @@ import { NftscanConfig } from '../types/nftscan-type';
 import { isEmpty } from '../util/common.util';
 import NftscanConst from '../util/nftscan.const';
 
+function apiKeyError() {
+  const error = new NftscanError(NsError.API_KEY_ERROR, 'The property "apiKey" cannot be empty.');
+  console.error(error);
+  console.error('To use our APIs, You need to register an account on NFTScan open platform');
+  console.error('NFTScan open platform ->', 'https://developer.nftscan.com/');
+  return Promise.reject(error);
+}
+
+function apiChainError() {
+  const error = new NftscanError(NsError.API_CHAIN_ERROR, 'The property "chain" is invalid');
+  console.error(error);
+  console.error('"chian" must be one of the following strings: [ETH, BNB, MATIC, GLMR, Arbitrum, Optimism, Solana]');
+  return Promise.reject(error);
+}
+
 /**
  * Configure the axios interceptor
  * @param nftscanConfig NFTScan SDK Initialization parameters
@@ -13,25 +28,12 @@ export function initHttpConfig(nftscanConfig: NftscanConfig) {
   const { apiKey, chain } = nftscanConfig;
 
   if (isEmpty(apiKey)) {
-    console.error(
-      new NftscanError(
-        NsError.API_KEY_ERROR,
-        'The property "apiKey" cannot be empty. To use our APIs, You need to register an account on NFTScan open platform',
-      ),
-    );
-
-    console.log('NFTScan open platform ->', 'https://developer.nftscan.com/');
-
+    apiKeyError();
     return;
   }
 
   if (isEmpty(NftscanConst.BASE_URL[chain])) {
-    console.error(
-      new NftscanError(
-        NsError.API_CHAIN_ERROR,
-        'The property "chain" cannot be empty and must be one of the following strings: [ETH, BNB, MATIC, GLMR, Arbitrum, Optimism, Solana]',
-      ),
-    );
+    apiChainError();
     return;
   }
 
@@ -85,11 +87,11 @@ export function initHttpConfig(nftscanConfig: NftscanConfig) {
 export function nftscanGet<T, V>(nftscanConfig: NftscanConfig, url: string, data?: T): Promise<V> {
   const { apiKey, chain } = nftscanConfig;
   if (isEmpty(apiKey)) {
-    return Promise.reject(new NftscanError(NsError.API_KEY_ERROR));
+    return apiKeyError();
   }
 
   if (isEmpty(NftscanConst.BASE_URL[chain])) {
-    return Promise.reject(new NftscanError(NsError.API_CHAIN_ERROR));
+    return apiChainError();
   }
 
   return axios.get(url, {
@@ -107,11 +109,11 @@ export function nftscanGet<T, V>(nftscanConfig: NftscanConfig, url: string, data
 export function nftscanPost<T, V>(nftscanConfig: NftscanConfig, url: string, data?: T): Promise<V> {
   const { apiKey, chain } = nftscanConfig;
   if (isEmpty(apiKey)) {
-    return Promise.reject(new NftscanError(NsError.API_KEY_ERROR));
+    return apiKeyError();
   }
 
   if (isEmpty(NftscanConst.BASE_URL[chain])) {
-    return Promise.reject(new NftscanError(NsError.API_CHAIN_ERROR));
+    return apiChainError();
   }
 
   return axios.post(url, data);
