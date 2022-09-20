@@ -19,7 +19,7 @@ import {
   QueryTradersRankingResponse,
   QueryVolumeIn24hResponse,
 } from '../../../types/evm/statistic/response-data';
-import { missingParamError } from '../../../types/nftscan-error';
+import { invalidLimitError, missingParamError } from '../../../types/nftscan-error';
 import { NsObject, RangeType, TradeType } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
@@ -55,6 +55,14 @@ export default class NftscanEvmStatistic extends BaseApi {
    * @returns Promise<{@link QueryCollectionRankingResponse}>
    */
   getCollectionRanking(params?: QueryCollectionRankingParams): Promise<QueryCollectionRankingResponse> {
+    if (params) {
+      const { limit } = params;
+
+      if (limit && limit > 100) {
+        return invalidLimitError(100);
+      }
+    }
+
     return nftscanGet<QueryCollectionRankingParams, QueryCollectionRankingResponse>(
       this.config,
       `${NftscanConst.API.evm.statistic.getCollectionRanking}`,

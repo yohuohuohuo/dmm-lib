@@ -1,7 +1,7 @@
 import { nftscanGet, nftscanPost } from '../../../http/nftscan.http';
 import { QueryTransactionsByFiltersParams, TransactionParams } from '../../../types/evm/transaction/request-params';
 import { CommonTransactionResponse, Transaction } from '../../../types/evm/transaction/response-data';
-import { invalidParamError, missingParamError } from '../../../types/nftscan-error';
+import { invalidLimitError, invalidParamError, missingParamError } from '../../../types/nftscan-error';
 import { BaseNsPaginationReqParam, NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
@@ -28,10 +28,14 @@ export default class NftscanEvmTransaction extends BaseApi {
     }
 
     if (params) {
-      const { token_id: TokenId, contract_address: contractAddress } = params;
+      const { token_id: TokenId, contract_address: contractAddress, limit } = params;
 
       if (!isEmpty(TokenId) && isEmpty(contractAddress)) {
         return missingParamError('contract_address');
+      }
+
+      if (limit && limit > 100) {
+        return invalidLimitError(100);
       }
     }
 
@@ -55,10 +59,17 @@ export default class NftscanEvmTransaction extends BaseApi {
    */
   getTransactionsByContract(
     contractAddress: string,
-    params: BaseNsPaginationReqParam,
+    params?: BaseNsPaginationReqParam,
   ): Promise<CommonTransactionResponse> {
     if (isEmpty(contractAddress)) {
       return missingParamError('contractAddress');
+    }
+
+    if (params) {
+      const { limit } = params;
+      if (limit && limit > 100) {
+        return invalidLimitError(100);
+      }
     }
 
     return nftscanGet<BaseNsPaginationReqParam, CommonTransactionResponse>(
@@ -93,6 +104,13 @@ export default class NftscanEvmTransaction extends BaseApi {
       return missingParamError('tokenId');
     }
 
+    if (params) {
+      const { limit } = params;
+      if (limit && limit > 100) {
+        return invalidLimitError(100);
+      }
+    }
+
     return nftscanGet<BaseNsPaginationReqParam, CommonTransactionResponse>(
       this.config,
       `${NftscanConst.API.evm.transaction.getTransactions}${contractAddress}/${tokenId}`,
@@ -116,6 +134,13 @@ export default class NftscanEvmTransaction extends BaseApi {
       return missingParamError('toAddress');
     }
 
+    if (params) {
+      const { limit } = params;
+      if (limit && limit > 100) {
+        return invalidLimitError(100);
+      }
+    }
+
     return nftscanGet<BaseNsPaginationReqParam, CommonTransactionResponse>(
       this.config,
       `${NftscanConst.API.evm.transaction.getTransactionsByToAddress}${toAddress}`,
@@ -134,10 +159,14 @@ export default class NftscanEvmTransaction extends BaseApi {
    * @returns Promise<{@link CommonAssetResponse}>
    */
   queryTransactionsByFilters(params: QueryTransactionsByFiltersParams): Promise<CommonTransactionResponse> {
-    const { contract_address_list: contractAddressList } = params;
+    const { contract_address_list: contractAddressList, limit } = params;
 
     if (contractAddressList && contractAddressList.length > 50) {
       return invalidParamError('contract_address_list', 'Maximum size is 50');
+    }
+
+    if (limit && limit > 100) {
+      return invalidLimitError(100);
     }
 
     return nftscanPost<QueryTransactionsByFiltersParams, CommonTransactionResponse>(
