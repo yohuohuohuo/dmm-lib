@@ -12,20 +12,9 @@
     <div>本地测试</div>
   </body>
   <script>
-    console.log('---本地测试---');
-    const nftscan = new DmmLib.Nftscan({ apiKey: '', chain: 'ETH' });
-    const nftscanEvm = nftscan.evm;
-
-    const testApi = async () => {
-      // const result = await nftscanEvm.getAccountOwn('0xE6d884c5195Aa6187b554E542DEaDcF0C91a431a', {
-      //   erc_type: 'erc721',
-      // });
-      // console.log('---test result--->', result);
-      // nftscan.test();
-    };
-
     window.onload = () => {
-      testApi();
+      // console.log('---本地测试---', DmmLib.TestApi);
+      DmmLib.TestApi.run();
     };
   </script>
 </html>

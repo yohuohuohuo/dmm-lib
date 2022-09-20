@@ -1,7 +1,7 @@
 import { BaseNsPaginationResData } from '../../nftscan-type';
 
 /**
- * The response parameters of api 'getBlockNumber'
+ * The response parameters of EVM API 'getBlockNumber'
  */
 export interface QueryBlockNumberResponse {
   /**
@@ -11,7 +11,7 @@ export interface QueryBlockNumberResponse {
 }
 
 /**
- * The response parameters of api 'queryAssestAmountByAccounts'
+ * The response parameters of EVM API 'queryAssestAmountByAccounts'
  */
 export interface QueryAssestAmountResponse {
   /**
@@ -53,7 +53,7 @@ interface AssetOwnerContent {
 }
 
 /**
- * The response parameters of api 'getAssetOwnerByContract'
+ * The response parameters of EVM API 'getAssetOwnerByContract'
  */
 export interface QueryAssetOwnerResponse extends BaseNsPaginationResData {
   content: Array<AssetOwnerContent>;
@@ -72,14 +72,14 @@ interface AccountAmountContent {
 }
 
 /**
- * The response parameters of api 'getAssetOwnerByContractAndTokenId'
+ * The response parameters of EVM API 'getAssetOwnerByContractAndTokenId'
  */
 export interface QueryAssetOwnerByContractAndTokenIdResponse extends BaseNsPaginationResData {
   content: Array<AccountAmountContent>;
 }
 
 /**
- * The response parameters of api 'refreshMetadata'
+ * The response parameters of EVM API 'refreshMetadata'
  */
 export interface RefreshMetadataResponse {
   /**

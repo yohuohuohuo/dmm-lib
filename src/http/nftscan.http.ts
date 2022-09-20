@@ -7,7 +7,7 @@ import NftscanConst from '../util/nftscan.const';
 
 function apiKeyError() {
   const error = new NftscanError(NsError.API_KEY_ERROR, 'The property "apiKey" cannot be empty.');
-  console.error(error);
+  console.error(error.msg);
   console.error('To use our APIs, You need to register an account on NFTScan open platform');
   console.error('NFTScan open platform ->', 'https://developer.nftscan.com/');
   return Promise.reject(error);
@@ -15,7 +15,7 @@ function apiKeyError() {
 
 function apiChainError() {
   const error = new NftscanError(NsError.API_CHAIN_ERROR, 'The property "chain" is invalid');
-  console.error(error);
+  console.error(error.msg);
   console.error('"chian" must be one of the following strings: [ETH, BNB, MATIC, GLMR, Arbitrum, Optimism, Solana]');
   return Promise.reject(error);
 }
@@ -80,7 +80,7 @@ export function initHttpConfig(nftscanConfig: NftscanConfig) {
 /**
  * NFTScan SDK's wrapper function of send get http request
  * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanConfig}
- * @param url The api url
+ * @param url The API url
  * @param params The axios get params
  * @returns Promise
  */
@@ -102,7 +102,7 @@ export function nftscanGet<T, V>(nftscanConfig: NftscanConfig, url: string, para
 /**
  * NFTScan SDK's wrapper function of send post http request
  * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanConfig}
- * @param url The api url
+ * @param url The API url
  * @param data The axios post data
  * @returns Promise
  */

@@ -1,7 +1,7 @@
 import { BaseNsPaginationReqParam } from '../../nftscan-type';
 
 /**
- * The request parameters of api 'getTransactionsByAccount'
+ * The request parameters of EVM API 'getTransactionsByAccount'
  */
 export interface TransactionParams extends BaseNsPaginationReqParam {
   /**
@@ -16,7 +16,7 @@ export interface TransactionParams extends BaseNsPaginationReqParam {
 }
 
 /**
- * The request parameters of api 'queryTransactionsByFilters'
+ * The request parameters of EVM API 'queryTransactionsByFilters'
  */
 export interface QueryTransactionsByFiltersParams extends BaseNsPaginationReqParam {
   /**

@@ -1,6 +1,6 @@
 export default class NftscanConst {
   /**
-   * NFTScan's api base url
+   * NFTScan's API base url
    */
   static readonly BASE_URL = {
     ETH: 'https://restapi.nftscan.com/api/',
@@ -13,7 +13,7 @@ export default class NftscanConst {
   };
 
   /**
-   * NFTScan's api url
+   * NFTScan's API url
    */
   static readonly API = {
     evm: {

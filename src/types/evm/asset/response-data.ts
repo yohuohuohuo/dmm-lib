@@ -144,14 +144,14 @@ export interface Asset {
 }
 
 /**
- * The common response parameters of asset related api
+ * The common response parameters of EVM asset related API
  */
 export interface CommonAssetResponse extends BaseNsPaginationResData {
   content: Array<Asset>;
 }
 
 /**
- * The response parameters of api 'getAllAssets'
+ * The response parameters of EVM API 'getAllAssets'
  */
 export interface QueryAllAssetsResponse {
   /**

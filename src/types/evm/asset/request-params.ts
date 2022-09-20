@@ -8,7 +8,7 @@ export interface CommonAssetParams extends BaseNsPaginationReqParam {
 }
 
 /**
- * The request parameters of api 'getAssetsByAccount'
+ * The request parameters of EVM API 'getAssetsByAccount'
  */
 export interface AssetParams extends CommonAssetParams {
   /**
@@ -23,7 +23,7 @@ export interface AssetParams extends CommonAssetParams {
 }
 
 /**
- * The request parameters of api 'getAccountMinted'
+ * The request parameters of EVM API 'getAccountMinted'
  */
 export interface AccountMintParams extends CommonAssetParams {
   /**
@@ -48,7 +48,7 @@ export interface BatchQueryAssetsListItemParams {
 }
 
 /**
- * The request parameters of api 'queryAssetsInBatches'
+ * The request parameters of EVM API 'queryAssetsInBatches'
  */
 export interface BatchQueryAssetsParams {
   /**
@@ -63,7 +63,7 @@ export interface BatchQueryAssetsParams {
 }
 
 /**
- * The request parameters of api 'queryAssetsByFilters'
+ * The request parameters of EVM API 'queryAssetsByFilters'
  */
 export interface QueryAssetsByFiltersParams extends CommonAssetParams {
   /**

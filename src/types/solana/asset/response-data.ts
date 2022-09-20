@@ -1,3 +1,5 @@
+import { BaseNsPaginationResData } from '../../nftscan-type';
+
 /**
  * The parameters of Asset, which represents a unique digital item whose ownership is managed by the blockchain
  * - details: {@link https://docs.nftscan.com/solana/Asset%20Model}
@@ -97,4 +99,11 @@ export interface Asset {
    * The token URI
    */
   token_uri: string;
+}
+
+/**
+ * The common response parameters of Solana asset related API
+ */
+export interface CommonAssetResponse extends BaseNsPaginationResData {
+  content: Array<Asset>;
 }

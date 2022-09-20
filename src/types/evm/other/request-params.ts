@@ -1,7 +1,7 @@
 import { BaseNsPaginationReqParam } from '../../nftscan-type';
 
 /**
- * The request parameters of api 'getAssetOwnerByContract'
+ * The request parameters of EVM API 'getAssetOwnerByContract'
  */
 export interface QueryAssetOwnerByContractParams extends BaseNsPaginationReqParam {
   /**
@@ -11,7 +11,7 @@ export interface QueryAssetOwnerByContractParams extends BaseNsPaginationReqPara
 }
 
 /**
- * The request parameters of api 'getAssetOwnerByContractAndTokenId'
+ * The request parameters of EVM API 'getAssetOwnerByContractAndTokenId'
  */
 export interface QueryAssetOwnerParams extends BaseNsPaginationReqParam {
   /**

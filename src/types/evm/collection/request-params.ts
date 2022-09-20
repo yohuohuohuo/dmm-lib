@@ -1,7 +1,7 @@
 import { SortDirection } from '../../nftscan-type';
 
 /**
- * The request parameters of api 'getCollectionsByRanking'
+ * The request parameters of EVM API 'getCollectionsByRanking'
  */
 export interface QueryCollectionsByRankingParams {
   /**
@@ -21,7 +21,7 @@ export interface QueryCollectionsByRankingParams {
 }
 
 /**
- * The request parameters of api 'queryCollectionsByFilters'
+ * The request parameters of EVM API 'queryCollectionsByFilters'
  */
 export interface QueryCollectionsByFiltersParams {
   /**

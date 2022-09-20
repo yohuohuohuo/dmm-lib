@@ -1,7 +1,7 @@
 import { RangeType, SortDirection } from '../../nftscan-type';
 
 /**
- * The request parameters of api 'getTradeRanking'
+ * The request parameters of EVM API 'getTradeRanking'
  */
 export interface QueryTradeRankingParams {
   /**
@@ -34,7 +34,7 @@ export interface QueryTradeRankingParams {
 }
 
 /**
- * The request parameters of api 'getCollectionRanking'
+ * The request parameters of EVM API 'getCollectionRanking'
  */
 export interface QueryCollectionRankingParams {
   /**
@@ -61,7 +61,7 @@ export interface QueryCollectionRankingParams {
 }
 
 /**
- * The request parameters of api 'getMarketplaceRanking'
+ * The request parameters of EVM API 'getMarketplaceRanking'
  */
 export interface QueryMarketplaceRankingParams {
   /**

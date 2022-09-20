@@ -63,12 +63,12 @@ export interface NsObject {
 }
 
 /**
- * NFTScan SDK's config properties
+ * NFTScan SDK's config properties.
  * To use our SDK, You need to register an account on NFTScan open platform({@link https://developer.nftscan.com/}) and get your API-KEY for making calls to API services.
  */
 export interface NftscanConfig {
   /**
-   * The api key of NFTScan
+   * The API key of NFTScan
    */
   apiKey: string;
 
