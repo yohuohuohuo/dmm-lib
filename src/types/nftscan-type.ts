@@ -29,6 +29,14 @@ export enum SortDirection {
   DESC = 'desc',
 }
 
+/**
+ * The trade type
+ */
+export enum TradeType {
+  BUY = 'buy',
+  sell = 'sell',
+}
+
 export enum RangeType {
   m15 = '15m',
   m30 = '30m',
@@ -80,9 +88,9 @@ export interface BaseNsPaginationReqParam {
   cursor?: string;
 
   /**
-   * Page size. Defaults to 20, capped at 1000
+   * Page size. Defaults to 20
    */
-  limit?: string;
+  limit?: number;
 }
 
 /**
