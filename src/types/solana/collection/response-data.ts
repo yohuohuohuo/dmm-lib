@@ -29,7 +29,7 @@ interface Attributes {
 
 /**
  * The parameters of Collection, which represents a collection on the solana blockchain.
- * {@link https://docs.nftscan.com/solana/Collection%20Model}
+ * - details: {@link https://docs.nftscan.com/solana/Collection%20Model}
  */
 export interface Collection {
   /**

@@ -19,7 +19,7 @@ interface Attributes {
 
 /**
  * The parameters of Asset, which represents a unique digital item whose ownership is managed by the blockchain
- * {@link https://docs.nftscan.com/nftscan/Asset%20Model}
+ * - details: {@link https://docs.nftscan.com/nftscan/Asset%20Model}
  */
 export interface Asset {
   /**

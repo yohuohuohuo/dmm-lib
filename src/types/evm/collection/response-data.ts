@@ -29,7 +29,7 @@ interface Attributes {
 
 /**
  * The parameters of Collection, which represents an NFT contract address on the blockchain.
- * {@link https://docs.nftscan.com/nftscan/Collection%20Model}
+ * - details: {@link https://docs.nftscan.com/nftscan/Collection%20Model}
  */
 export interface Collection {
   /**

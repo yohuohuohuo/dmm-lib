@@ -60,5 +60,26 @@ export default class NftscanConst {
         refreshMetadata: '/v2/asset/metadata/refresh',
       },
     },
+    solana: {
+      assets: {
+        getAssetsByAccount: '/sol/account/own/',
+        getAllAssets: '/sol/account/own/all/',
+        getAccountMinted: '/sol/account/mint/',
+        getAssetsByCollection: '/sol/assets/collection/',
+        getAssetsByTokenAddress: '/sol/assets/',
+      },
+      transaction: {
+        getTransactionsByAccount: '/sol/transactions/account/',
+        getTransactionsByCollection: '/sol/transactions/collection/',
+        getTransactionsByTokenAddress: '/sol/transactions/',
+      },
+      collection: {
+        getCollection: '/sol/collections/',
+        getCollectionByFilters: '/sol/collections/filters',
+      },
+      statistic: {
+        getTradeRanking: '/sol/statistics/ranking/trade',
+      },
+    },
   };
 }

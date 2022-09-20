@@ -2,7 +2,7 @@ import { BaseNsPaginationResData } from '../../nftscan-type';
 
 /**
  * The parameters of Transaction, which represents one transaction for an NFT asset on the blockchain.
- * {@link https://docs.nftscan.com/nftscan/Transaction%20Model}
+ * - details: {@link https://docs.nftscan.com/nftscan/Transaction%20Model}
  */
 export interface Transaction {
   /**
