@@ -25,7 +25,7 @@ function apiChainError() {
  * @param apiKey The API key of NFTScan
  * @param chain The name of the blockchain you will be requesting
  */
-function initHttpConfig(apiKey: string, chain: EvmChain | 'Solana') {
+function initHttpConfig(apiKey: string, chain: EvmChain | 'solana') {
   axios.interceptors.request.use(
     (config) => {
       return {
@@ -90,7 +90,7 @@ export function initSolanaHttpConfig(nftscanConfig: NftscanSolanaConfig) {
     return;
   }
 
-  initHttpConfig(apiKey, 'Solana');
+  initHttpConfig(apiKey, 'solana');
 }
 
 /**

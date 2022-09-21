@@ -4,12 +4,13 @@
  * The NFTScan SDK supported chains
  */
 export enum EvmChain {
-  ETH = 'ETH',
-  BNB = 'BNB',
-  MATIC = 'MATIC',
-  GLMR = 'GLMR',
-  Arbitrum = 'Arbitrum',
-  Optimism = 'Optimism',
+  ETH = 'eth',
+  BNB = 'bnb',
+  ARBITRUM = 'arbitrum',
+  GLMR = 'glmr',
+  MATIC = 'matic',
+  OPTIMISM = 'optimism',
+  PLATON = 'platon',
 }
 
 /**
