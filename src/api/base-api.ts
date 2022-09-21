@@ -1,9 +1,9 @@
-import { NftscanConfig } from '../types/nftscan-type';
+import { NftscanEvmConfig, NftscanSolanaConfig } from '../types/nftscan-type';
 
 export default class BaseApi {
-  config: NftscanConfig;
+  config: NftscanEvmConfig | NftscanSolanaConfig;
 
-  constructor(config: NftscanConfig) {
+  constructor(config: NftscanEvmConfig | NftscanSolanaConfig) {
     this.config = config;
   }
 }

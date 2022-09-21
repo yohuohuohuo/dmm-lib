@@ -1,5 +1,5 @@
-import { initHttpConfig } from '../../http/nftscan.http';
-import { NftscanConfig } from '../../types/nftscan-type';
+import { initEvmHttpConfig } from '../../http/nftscan.http';
+import { NftscanEvmConfig } from '../../types/nftscan-type';
 import BaseApi from '../base-api';
 import NftscanEvmAsset from './asset';
 import NftscanEvmCollection from './collection';
@@ -17,9 +17,9 @@ import NftscanEvmTransaction from './transaction';
  * and get your API key for NFTScan SDK initialize config.
  */
 export default class NftscanEvm extends BaseApi {
-  constructor(config: NftscanConfig) {
+  constructor(config: NftscanEvmConfig) {
     super(config);
-    initHttpConfig(config);
+    initEvmHttpConfig(config);
   }
 
   /**

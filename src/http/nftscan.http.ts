@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 import { NftscanError, NsError } from '../types/nftscan-error';
-import { NftscanConfig } from '../types/nftscan-type';
+import { EvmChain, NftscanEvmConfig, NftscanSolanaConfig } from '../types/nftscan-type';
 import { isEmpty } from '../util/common.util';
 import NftscanConst from '../util/nftscan.const';
 
@@ -16,33 +16,22 @@ function apiKeyError() {
 function apiChainError() {
   const error = new NftscanError(NsError.API_CHAIN_ERROR, 'The property "chain" is invalid');
   console.error(error.msg);
-  console.error('"chian" must be one of the following strings: [ETH, BNB, MATIC, GLMR, Arbitrum, Optimism, Solana]');
+  console.error('"chian" must be one of the following strings: [ETH, BNB, MATIC, GLMR, Arbitrum, Optimism]');
   return Promise.reject(error);
 }
 
 /**
  * Configure the axios interceptor
- * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanConfig}
+ * @param apiKey The API key of NFTScan
+ * @param chain The name of the blockchain you will be requesting
  */
-export function initHttpConfig(nftscanConfig: NftscanConfig) {
-  const { apiKey, chain } = nftscanConfig;
-
-  if (isEmpty(apiKey)) {
-    apiKeyError();
-    return;
-  }
-
-  if (isEmpty(NftscanConst.BASE_URL[chain])) {
-    apiChainError();
-    return;
-  }
-
+function initHttpConfig(apiKey: string, chain: EvmChain | 'Solana') {
   axios.interceptors.request.use(
     (config) => {
       return {
         ...config,
-        baseURL: NftscanConst.BASE_URL[nftscanConfig.chain],
-        headers: { ...config.headers, 'X-API-KEY': nftscanConfig.apiKey },
+        baseURL: NftscanConst.BASE_URL[chain],
+        headers: { ...config.headers, 'X-API-KEY': apiKey },
       };
     },
     (error) => {
@@ -77,21 +66,48 @@ export function initHttpConfig(nftscanConfig: NftscanConfig) {
   );
 }
 
+export function initEvmHttpConfig(nftscanConfig: NftscanEvmConfig) {
+  const { apiKey, chain } = nftscanConfig;
+
+  if (isEmpty(apiKey)) {
+    apiKeyError();
+    return;
+  }
+
+  if (isEmpty(NftscanConst.BASE_URL[chain])) {
+    apiChainError();
+    return;
+  }
+
+  initHttpConfig(apiKey, chain);
+}
+
+export function initSolanaHttpConfig(nftscanConfig: NftscanSolanaConfig) {
+  const { apiKey } = nftscanConfig;
+
+  if (isEmpty(apiKey)) {
+    apiKeyError();
+    return;
+  }
+
+  initHttpConfig(apiKey, 'Solana');
+}
+
 /**
  * NFTScan SDK's wrapper function of send get http request
- * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanConfig}
+ * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanEvmConfig}
  * @param url The API url
  * @param params The axios get params
  * @returns Promise
  */
-export function nftscanGet<T, V>(nftscanConfig: NftscanConfig, url: string, params?: T): Promise<V> {
-  const { apiKey, chain } = nftscanConfig;
+export function nftscanGet<T, V>(
+  nftscanConfig: NftscanEvmConfig | NftscanSolanaConfig,
+  url: string,
+  params?: T,
+): Promise<V> {
+  const { apiKey } = nftscanConfig;
   if (isEmpty(apiKey)) {
     return apiKeyError();
-  }
-
-  if (isEmpty(NftscanConst.BASE_URL[chain])) {
-    return apiChainError();
   }
 
   return axios.get(url, {
@@ -101,19 +117,19 @@ export function nftscanGet<T, V>(nftscanConfig: NftscanConfig, url: string, para
 
 /**
  * NFTScan SDK's wrapper function of send post http request
- * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanConfig}
+ * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanEvmConfig}
  * @param url The API url
  * @param data The axios post data
  * @returns Promise
  */
-export function nftscanPost<T, V>(nftscanConfig: NftscanConfig, url: string, data?: T): Promise<V> {
-  const { apiKey, chain } = nftscanConfig;
+export function nftscanPost<T, V>(
+  nftscanConfig: NftscanEvmConfig | NftscanSolanaConfig,
+  url: string,
+  data?: T,
+): Promise<V> {
+  const { apiKey } = nftscanConfig;
   if (isEmpty(apiKey)) {
     return apiKeyError();
-  }
-
-  if (isEmpty(NftscanConst.BASE_URL[chain])) {
-    return apiChainError();
   }
 
   return axios.post(url, data);

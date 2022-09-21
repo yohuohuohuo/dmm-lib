@@ -3,14 +3,13 @@
 /**
  * The NFTScan SDK supported chains
  */
-export enum Chain {
+export enum EvmChain {
   ETH = 'ETH',
   BNB = 'BNB',
   MATIC = 'MATIC',
   GLMR = 'GLMR',
   Arbitrum = 'Arbitrum',
   Optimism = 'Optimism',
-  Solana = 'Solana',
 }
 
 /**
@@ -63,10 +62,10 @@ export interface NsObject {
 }
 
 /**
- * NFTScan SDK's config properties.
+ * NFTScan SDK's EVM-like blockchain config properties.
  * To use our SDK, You need to register an account on NFTScan open platform({@link https://developer.nftscan.com/}) and get your API-KEY for making calls to API services.
  */
-export interface NftscanConfig {
+export interface NftscanEvmConfig {
   /**
    * The API key of NFTScan
    */
@@ -75,7 +74,18 @@ export interface NftscanConfig {
   /**
    * The name of the chain you will be requesting
    */
-  chain: Chain;
+  chain: EvmChain;
+}
+
+/**
+ * NFTScan SDK's Solana blockchain config properties.
+ * To use our SDK, You need to register an account on NFTScan open platform({@link https://developer.nftscan.com/}) and get your API-KEY for making calls to API services.
+ */
+export interface NftscanSolanaConfig {
+  /**
+   * The API key of NFTScan
+   */
+  apiKey: string;
 }
 
 /**

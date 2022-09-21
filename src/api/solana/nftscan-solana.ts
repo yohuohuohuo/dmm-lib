@@ -1,5 +1,5 @@
-import { initHttpConfig } from '../../http/nftscan.http';
-import { NftscanConfig } from '../../types/nftscan-type';
+import { initSolanaHttpConfig } from '../../http/nftscan.http';
+import { NftscanSolanaConfig } from '../../types/nftscan-type';
 import BaseApi from '../base-api';
 import NftscanSolanaAsset from './asset';
 import NftscanSolanaCollection from './collection';
@@ -18,9 +18,9 @@ import NftscanSolanaTransaction from './transaction';
  * and get your API key for NFTScan SDK initialize config.
  */
 export default class NftscanSolana extends BaseApi {
-  constructor(config: NftscanConfig) {
+  constructor(config: NftscanSolanaConfig) {
     super(config);
-    initHttpConfig(config);
+    initSolanaHttpConfig(config);
   }
 
   /**
