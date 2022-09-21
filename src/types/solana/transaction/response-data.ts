@@ -1,3 +1,5 @@
+import { BaseNsPaginationResData } from '../../nftscan-type';
+
 /**
  * The parameters of Transaction, which represents one transaction for an NFT asset on the blockchain.
  * - details: {@link https://docs.nftscan.com/solana/Transaction%20Model}
@@ -67,4 +69,11 @@ export interface Transaction {
    * The trade price of the transaction in Number
    */
   trade_price: number;
+}
+
+/**
+ * The common response parameters of Solana transaction related API
+ */
+export interface CommonTransactionResponse extends BaseNsPaginationResData {
+  content: Array<Transaction>;
 }

@@ -161,7 +161,7 @@ export default class NftscanEvmAsset extends BaseApi {
 
     return nftscanGet<NsObject, Asset>(
       this.config,
-      `${NftscanConst.API.evm.assets.getAssets}${contractAddress}`,
+      `${NftscanConst.API.evm.assets.getAssets}${contractAddress}/${tokenId}`,
       params,
     );
   }

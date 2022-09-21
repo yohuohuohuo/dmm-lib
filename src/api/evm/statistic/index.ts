@@ -36,7 +36,7 @@ export default class NftscanEvmStatistic extends BaseApi {
    * @param params The query params {@link QueryTradeRankingParams}
    * @returns Promise<{@link QueryTradeRankingResponse}>
    */
-  getCollectionsByContract(params?: QueryTradeRankingParams): Promise<QueryTradeRankingResponse> {
+  getTradeRanking(params?: QueryTradeRankingParams): Promise<QueryTradeRankingResponse> {
     return nftscanGet<QueryTradeRankingParams, QueryTradeRankingResponse>(
       this.config,
       `${NftscanConst.API.evm.statistic.getTradeRanking}`,

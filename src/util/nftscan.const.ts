@@ -75,7 +75,7 @@ export default class NftscanConst {
       },
       collection: {
         getCollection: '/sol/collections/',
-        getCollectionByFilters: '/sol/collections/filters',
+        queryCollectionsByFilters: '/sol/collections/filters',
       },
       statistic: {
         getTradeRanking: '/sol/statistics/ranking/trade',

@@ -1,5 +1,8 @@
 import { BaseNsPaginationReqParam, ErcType } from '../../nftscan-type';
 
+/**
+ * The common request parameters of EVM asset related API
+ */
 export interface CommonAssetParams extends BaseNsPaginationReqParam {
   /**
    * Whether to load attribute data of the assets. Default is false

@@ -2,6 +2,9 @@ import { initHttpConfig } from '../../http/nftscan.http';
 import { NftscanConfig } from '../../types/nftscan-type';
 import BaseApi from '../base-api';
 import NftscanSolanaAsset from './asset';
+import NftscanSolanaCollection from './collection';
+import NftscanSolanaStatistic from './statistic';
+import NftscanSolanaTransaction from './transaction';
 
 /**
  * This class is the main entry point into NFTScan's Solana APIs and separates functionality into different object.
@@ -25,5 +28,26 @@ export default class NftscanSolana extends BaseApi {
    */
   get asset(): NftscanSolanaAsset {
     return new NftscanSolanaAsset(this.config);
+  }
+
+  /**
+   * The `transaction` object contains methods for NFTScan's Solana transaction API.
+   */
+  get transaction(): NftscanSolanaTransaction {
+    return new NftscanSolanaTransaction(this.config);
+  }
+
+  /**
+   * The `collection` object contains methods for NFTScan's Solana collection API.
+   */
+  get collection(): NftscanSolanaCollection {
+    return new NftscanSolanaCollection(this.config);
+  }
+
+  /**
+   * The `statistic` object contains methods for NFTScan's Solana statistic API.
+   */
+  get statistic(): NftscanSolanaStatistic {
+    return new NftscanSolanaStatistic(this.config);
   }
 }

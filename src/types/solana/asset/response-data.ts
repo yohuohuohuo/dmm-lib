@@ -107,3 +107,32 @@ export interface Asset {
 export interface CommonAssetResponse extends BaseNsPaginationResData {
   content: Array<Asset>;
 }
+
+export interface QueryAllAssetsResponse {
+  assets: Array<Asset>;
+
+  /**
+   * The collection
+   */
+  collection: string;
+
+  /**
+   * The description
+   */
+  description: string;
+
+  /**
+   * How many items for the collection
+   */
+  items_total: number;
+
+  /**
+   * The logo URL
+   */
+  logo_url: string;
+
+  /**
+   * How many items the account address owns
+   */
+  owns_total: number;
+}

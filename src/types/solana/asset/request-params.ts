@@ -1,7 +1,7 @@
 import { BaseNsPaginationReqParam } from '../../nftscan-type';
 
 /**
- * The request parameters of Solana API 'getAssetsByAccount'
+ * The common request parameters of Solana asset related API
  */
 export interface AssetParams extends BaseNsPaginationReqParam {
   /**
