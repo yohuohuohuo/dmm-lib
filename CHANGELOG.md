@@ -1,4 +1,11 @@
 # Changelog
+## [2.1.0](https://github.com/yohuohuohuo/dmm-lib/compare/v2.0.3...v2.1.0) (2022-09-22)
+
+
+### ✨ Features | 新功能
+
+* add export nftscan-type ([4efe6a4](https://github.com/yohuohuohuo/dmm-lib/commit/4efe6a49f9473c2ec3b0703eb9563f536e8e5280))
+
 ### [2.0.2](https://github.com/yohuohuohuo/dmm-lib/compare/v2.0.1...v2.0.2) (2022-09-22)
 
 ### [2.0.1](https://github.com/yohuohuohuo/dmm-lib/compare/v2.0.0...v2.0.1) (2022-09-22)
