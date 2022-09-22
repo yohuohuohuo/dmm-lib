@@ -1,4 +1,13 @@
 # Changelog
+### [2.2.1](https://github.com/yohuohuohuo/dmm-lib/compare/v2.2.0...v2.2.1) (2022-09-22)
+
+
+### ✨ Features | 新功能
+
+* change deploy yml ([e976af6](https://github.com/yohuohuohuo/dmm-lib/commit/e976af6a4c1a7c0c7a06a905ea16750af0badca3))
+* keep code comments ([4303643](https://github.com/yohuohuohuo/dmm-lib/commit/4303643a04c6b8068d3b5c57cb878d2693dbb5cd))
+* release v2.2.0 ([2c0a1de](https://github.com/yohuohuohuo/dmm-lib/commit/2c0a1de736e3ec7c7cc850fcb364552e658be67a))
+
 ## [2.2.0](https://github.com/yohuohuohuo/dmm-lib/compare/v2.1.0...v2.2.0) (2022-09-22)
 
 
