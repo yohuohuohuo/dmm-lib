@@ -30,10 +30,10 @@ yarn add nftscan-sdk
 
 Then you can import and use the SDK:
 
-```js
-import { NftscanEvm, NftscanSolana } from "nftscan-sdk";
+```ts
+import { EvmChain, NftscanEvm } from "nftscan-sdk";
 
-const evm = new NftscanEvm({ apiKey: '<YOUR_API_KEY>', chain: 'eth' });
+const evm = new NftscanEvm({ apiKey: '<YOUR_API_KEY>', chain: EvmChain.ETH });
 ```
 
 

@@ -3,7 +3,7 @@
     // 指定 ECMAScript 目标版本 "ES3"（默认）， "ES5"， "ES6" / "ES2015"， "ES2016"， "ES2017" 或 "ESNext"。
     "target": "ES5",
     // 构建的目标代码删除所有注释，但是不会删除以 /!* 开头的版权信息
-    "removeComments": true,
+    "removeComments": false,
     // 启用所有严格类型检查选项。
     "strict": true,
     // 禁止对同一个文件的不一致的引用
