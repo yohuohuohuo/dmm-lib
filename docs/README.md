@@ -1,7 +1,7 @@
 ---
 home: true
-heroText: dmm-lib
-tagline: Hello World
+heroText: NFTScan SDK
+tagline: Quick access to Web3 via NFTScan
 
 # 配置首页按钮
 actions:
@@ -12,19 +12,49 @@ actions:
     link: https://github.com/yohuohuohuo/dmm-lib
     type: secondary
 
-# 配置首页特效列表
-features:
-  - title: Webpack构建
-    details: 使用Webpack 做打包构建
-  - title: 代码风格规范
-    details: ESLint、Prettier、EditorConifg 做代码规范约束
-  - title: 提交规范
-    details: husky、Commitlint、lint-staged 做提交规范约束
-  - title: 单元测试
-    details: Jest 做单元测试
-  - title: CI/CD
-    details: Github Actions 做自动化部署发布
-
 # 首页的页脚
 footer: MIT Licensed | Copyright © 2022 yohuohuohuo
 ---
+
+NFTScan API provides convenience and quick access to full NFT data with developers
+
+QUICK START
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
+
+```shell
+yarn add nftscan-sdk
+```
+
+```ts
+import { ErcType, EvmChain, NftscanEvm } from "nftscan-sdk";
+
+const config = {
+  apiKey: "<YOUR_API_KEY>", // Replace with your NFTScan API key.
+  chain: EvmChain.ETH, // Replace with your chain.
+};
+
+const evm = new NftscanEvm(config);
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="NPM">
+
+```shell
+npm install nftscan-sdk
+```
+
+```ts
+import { ErcType, EvmChain, NftscanEvm } from "nftscan-sdk";
+
+const config = {
+  apiKey: "<YOUR_API_KEY>", // Replace with your NFTScan API key.
+  chain: EvmChain.ETH, // Replace with your chain.
+};
+
+const evm = new NftscanEvm(config);
+```
+
+  </CodeGroupItem>
+</CodeGroup>
