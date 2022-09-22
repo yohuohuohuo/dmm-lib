@@ -1,4 +1,11 @@
 # Changelog
+### [2.2.2](https://github.com/yohuohuohuo/dmm-lib/compare/v2.2.1...v2.2.2) (2022-09-22)
+
+
+### ✨ Features | 新功能
+
+* change release action ([1dfb23b](https://github.com/yohuohuohuo/dmm-lib/commit/1dfb23b665fe7d6c3a6f5bd4799cc4ffce5a016d))
+
 ### [2.2.1](https://github.com/yohuohuohuo/dmm-lib/compare/v2.2.0...v2.2.1) (2022-09-22)
 
 
