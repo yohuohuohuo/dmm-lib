@@ -1,4 +1,31 @@
 # Changelog
+## [2.0.0](https://github.com/yohuohuohuo/dmm-lib/compare/v1.1.4...v2.0.0) (2022-09-22)
+
+
+### ✨ Features | 新功能
+
+* add all of the evm api ([da7db74](https://github.com/yohuohuohuo/dmm-lib/commit/da7db742e4f6127d8ed22f988efb79dca6e5c7db))
+* add code comments ([4c61f7b](https://github.com/yohuohuohuo/dmm-lib/commit/4c61f7b0d15facac852f4a2700c47cc00ece13f7))
+* add collection related api ([95f0424](https://github.com/yohuohuohuo/dmm-lib/commit/95f04246e2c14a27134281388fed826968dbdc18))
+* add evm、solana common response model ([aee3857](https://github.com/yohuohuohuo/dmm-lib/commit/aee385726f4b3411f249bcc09a1bc64b0fa46d2d))
+* add limit check ([9b98887](https://github.com/yohuohuohuo/dmm-lib/commit/9b988871b63400437dfdc4eef23d11cc4568775e))
+* add solana api ([ba9d8c7](https://github.com/yohuohuohuo/dmm-lib/commit/ba9d8c735c407f07abf3f0b5f42a80a82ed1905d))
+* add solana api url ([9aa8d28](https://github.com/yohuohuohuo/dmm-lib/commit/9aa8d2878dc067e302b493c87a47c891635a1ae4))
+* add statistic and other api ([17a0377](https://github.com/yohuohuohuo/dmm-lib/commit/17a0377b695260e9b685f4b30b0068588a379a5c))
+* add statistic and other model ([6bdb9ce](https://github.com/yohuohuohuo/dmm-lib/commit/6bdb9ce8c1c151e3066f086470369a06ab016dd7))
+* add transaction related api ([4e76b7c](https://github.com/yohuohuohuo/dmm-lib/commit/4e76b7ca5f93b84c217771a6d6ebc0e1cf4ded84))
+* add wrapper nftscan http ([94a24e5](https://github.com/yohuohuohuo/dmm-lib/commit/94a24e57e66112907b2d4e8114c72609b70f4a59))
+* change asset api request param ([2b2474d](https://github.com/yohuohuohuo/dmm-lib/commit/2b2474d57fda91da92977e0f425b4f5aa6faf2e0))
+* change assets api name ([579d5a1](https://github.com/yohuohuohuo/dmm-lib/commit/579d5a169605f73b8aae2aa35201cd1e282c05ff))
+* change config param ([6ab7c13](https://github.com/yohuohuohuo/dmm-lib/commit/6ab7c13ba294c541b94df2f07a2729c9de3403ea))
+* change global config error msg ([c2abaac](https://github.com/yohuohuohuo/dmm-lib/commit/c2abaac8c9757046158b303978f8ce7eafd65338))
+* change url config ([6b6c66a](https://github.com/yohuohuohuo/dmm-lib/commit/6b6c66adde42fecfa9859ebf0479c7a564665454))
+* evm api done ([0de5fc8](https://github.com/yohuohuohuo/dmm-lib/commit/0de5fc8e014ea8c1a8888cb00c5f62ef3e86ecf3))
+* handle common error ([f85c1f7](https://github.com/yohuohuohuo/dmm-lib/commit/f85c1f7ca9be8ff6a7851b7693bc8fc2d3db3e5f))
+* release test ([8e0ba59](https://github.com/yohuohuohuo/dmm-lib/commit/8e0ba5936539316ff73283b28aad16195e0afab3))
+* solana api done ([9dd0c93](https://github.com/yohuohuohuo/dmm-lib/commit/9dd0c93e0e5b5c712e44be16658d29e5f26ca47b))
+* update doc ([17b8c83](https://github.com/yohuohuohuo/dmm-lib/commit/17b8c83f682596351d99ba51a23db819b068488d))
+
 ### [1.1.4](https://github.com/yohuohuohuo/dmm-lib/compare/v1.1.3...v1.1.4) (2022-09-14)
 
 
