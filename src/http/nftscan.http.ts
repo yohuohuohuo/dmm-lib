@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import axios from 'axios';
-import { NftscanError, NsError } from '../types/nftscan-error';
-import { EvmChain, NftscanEvmConfig, NftscanSolanaConfig } from '../types/nftscan-type';
+import { NftscanError } from '../types/nftscan-error';
+import { EvmChain, NftscanEvmConfig, NftscanSolanaConfig, NsError } from '../types/nftscan-type';
 import { isEmpty } from '../util/common.util';
 import NftscanConst from '../util/nftscan.const';
 

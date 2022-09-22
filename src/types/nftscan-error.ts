@@ -1,4 +1,4 @@
-/* eslint-disable no-shadow */
+import { NsError } from './nftscan-type';
 
 /**
  * NFTScan SDK's wrapper error object
@@ -18,18 +18,6 @@ export class NftscanError {
     this.code = code;
     this.msg = msg || '';
   }
-}
-
-/**
- * NFTScan SDK's error code
- */
-export enum NsError {
-  API_KEY_ERROR = 'api_key_error',
-  API_CHAIN_ERROR = 'api_chain_error',
-  REQUEST_ERROR = 'request_error',
-  RESPONSE_DATA_EMPTY = 'response_data_empty',
-  NFTSCAN_DATA_EMPTY = 'nftscan_data_empty',
-  PARAM_ERROR = 'param_error',
 }
 
 function missingParam(paramName: string) {
