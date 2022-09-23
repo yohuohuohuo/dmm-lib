@@ -1,4 +1,12 @@
 # Changelog
+### [2.2.4](https://github.com/yohuohuohuo/dmm-lib/compare/v2.2.3...v2.2.4) (2022-09-23)
+
+
+### ✨ Features | 新功能
+
+* change axios init ([7c7c57e](https://github.com/yohuohuohuo/dmm-lib/commit/7c7c57e98c0cde651b9621c19fbba9f95c46e45e))
+* release v2.2.3 ([5fa75f1](https://github.com/yohuohuohuo/dmm-lib/commit/5fa75f1d5b72f31029e9c326de2785bb33398c43))
+
 ### [2.2.3](https://github.com/yohuohuohuo/dmm-lib/compare/v2.2.2...v2.2.3) (2022-09-23)
 
 
