@@ -7,14 +7,14 @@ export class NftscanError {
   /**
    * error code
    */
-  code: string | number = '';
+  code: string | number | undefined = '';
 
   /**
    * error message
    */
   msg = '';
 
-  constructor(code: string | number, msg?: string) {
+  constructor(code: string | number | undefined, msg?: string) {
     this.code = code;
     this.msg = msg || '';
   }
