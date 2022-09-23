@@ -1,5 +1,9 @@
 # NFTScan SDK (JavaScript / TypeScript)
-The NFTScan SDK is a `JavaScript` / `TypeScript` library which provides convenience and quick access to full NFT data with developers.
+The NFTScan SDK is a `JavaScript` / `TypeScript` library which provides convenience and quick access to the NFTScan's APIs, it helps developers build new experiences retrieving NFTs and data analysis. We provide a set of endpoints that enable you to fetch ERC721 and ERC1155 NFT assets as well as transactions, collections, marketplace statistics and more.
+
+To use our APIs, You need to register an account on NFTScan open platform [OpenAPI Platform](https://developer.nftscan.com) and get your `API-KEY` for making calls to API services.
+
+The daily request limit for a single account is 10,000 general calls. If you have more needs, please upgrade your API plans to [OpenAPI Pricing](https://developer.nftscan.com/payment/pricing) to enhance the number of calls and obtain access to the PRO interfaces.
 
 The SDK currently supports the following chains:
 
@@ -93,7 +97,7 @@ const { content, next } = await evm.asset.getAccountMinted("<ACCOUNT_ADDRESS>", 
 // update the nextCursor
 nextCursor = next;
 ```
-###More
+### More
 
 - [NFTScan API](https://developer.nftscan.com/)
 - [NFTScan API Docs](https://docs.nftscan.com/)
