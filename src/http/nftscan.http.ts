@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { NftscanError } from '../types/nftscan-error';
 import { EvmChain, NftscanEvmConfig, NftscanSolanaConfig, NsError } from '../types/nftscan-type';
 import { isEmpty } from '../util/common.util';
@@ -38,7 +38,9 @@ function initHttpConfig(apiKey: string, chain: EvmChain | 'solana') {
       return Promise.reject(new NftscanError(NsError.REQUEST_ERROR, error.message));
     },
   );
+}
 
+export function initHttpResponse() {
   axios.interceptors.response.use(
     (response) => {
       if (response.status !== 200) {
@@ -60,7 +62,7 @@ function initHttpConfig(apiKey: string, chain: EvmChain | 'solana') {
 
       return data;
     },
-    (error) => {
+    (error: AxiosError) => {
       return Promise.reject(new NftscanError(error.code, error.message));
     },
   );
