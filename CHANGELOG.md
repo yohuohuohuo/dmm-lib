@@ -1,4 +1,13 @@
 # Changelog
+### [2.2.3](https://github.com/yohuohuohuo/dmm-lib/compare/v2.2.2...v2.2.3) (2022-09-23)
+
+
+### ✨ Features | 新功能
+
+* add get API_KEY entrance ([7d262ca](https://github.com/yohuohuohuo/dmm-lib/commit/7d262cad611513bda9af9808f75b9f2eb1b1f3f4))
+* add request params and response data types export ([73b7334](https://github.com/yohuohuohuo/dmm-lib/commit/73b7334f7c8feeb7ea0b0e6a43e663e9e9b27688))
+* update readme ([ab7b603](https://github.com/yohuohuohuo/dmm-lib/commit/ab7b60367ca0ebbf0dc7517ade61d78aa04ea54c))
+
 ### [2.2.2](https://github.com/yohuohuohuo/dmm-lib/compare/v2.2.1...v2.2.2) (2022-09-22)
 
 
