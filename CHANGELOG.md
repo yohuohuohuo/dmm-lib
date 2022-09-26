@@ -1,4 +1,17 @@
 # Changelog
+### [2.2.5](https://github.com/yohuohuohuo/dmm-lib/compare/v2.2.4...v2.2.5) (2022-09-26)
+
+
+### ✨ Features | 新功能
+
+* return the raw data ([c0ba2cd](https://github.com/yohuohuohuo/dmm-lib/commit/c0ba2cda31eca211bbe495156d6b513ff06a8898))
+* update changelog ([3050cb7](https://github.com/yohuohuohuo/dmm-lib/commit/3050cb7c5cb1bd5179a86aea2476e8add1b9d646))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+*  all of the input param was checked ([f08d4ec](https://github.com/yohuohuohuo/dmm-lib/commit/f08d4ec5ff410f5463655c13f1b92fa1ab918a62))
+
 ### [2.2.4](https://github.com/yohuohuohuo/dmm-lib/compare/v2.2.3...v2.2.4) (2022-09-23)
 
 
