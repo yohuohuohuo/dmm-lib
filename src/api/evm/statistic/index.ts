@@ -166,7 +166,7 @@ export default class NftscanEvmStatistic extends BaseApi {
    * @param params The query params {@link QueryMarketplaceRankingParams}
    * @returns Promise<{@link QueryMarketplaceRankingResponse}>
    */
-  getMarketplaceRanking(params: QueryMarketplaceRankingParams): Promise<QueryMarketplaceRankingResponse> {
+  getMarketplaceRanking(params?: QueryMarketplaceRankingParams): Promise<QueryMarketplaceRankingResponse> {
     return nftscanGet<QueryMarketplaceRankingParams, QueryMarketplaceRankingResponse>(
       this.config,
       `${NftscanConst.API.evm.statistic.getMarketplaceRanking}`,
@@ -251,7 +251,7 @@ export default class NftscanEvmStatistic extends BaseApi {
    * @returns Promise<{@link QueryTradersRankingResponse}>
    */
   getTradersRanking(
-    time?: RangeType.h1 | RangeType.h6 | RangeType.h12 | RangeType.d1 | RangeType.d3 | RangeType.d7 | RangeType.d30,
+    time?: RangeType.h1 | RangeType.h6 | RangeType.h12 | RangeType.d1 | RangeType.d3,
     tradeType?: TradeType,
   ): Promise<QueryTradersRankingResponse> {
     return nftscanGet<NsObject, QueryTradersRankingResponse>(

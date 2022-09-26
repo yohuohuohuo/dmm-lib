@@ -7,20 +7,20 @@ export interface QueryCollectionsByFiltersParams extends BaseNsPaginationReqPara
   /**
    * Filter of end block number
    */
-  block_number_end: number;
+  block_number_end?: number;
 
   /**
    * Filter of start block number
    */
-  block_number_start: number;
+  block_number_start?: number;
 
   /**
    * List of collection. Maximum size is 50.
    */
-  collection: Array<string>;
+  collection?: Array<string>;
 
   /**
    * Filter of symbol
    */
-  symbol: string;
+  symbol?: string;
 }

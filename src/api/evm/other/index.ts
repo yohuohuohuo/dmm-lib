@@ -131,10 +131,6 @@ export default class NftscanEvmOther extends BaseApi {
       return missingParamError('contractAddress');
     }
 
-    if (isEmpty(tokenId)) {
-      return missingParamError('tokenId');
-    }
-
     return nftscanPost<NsObject, RefreshMetadataResponse>(
       this.config,
       `${NftscanConst.API.evm.other.refreshMetadata}`,
