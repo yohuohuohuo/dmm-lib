@@ -56,10 +56,6 @@ export function initHttpResponse() {
         return Promise.reject(new NftscanError(code, msg));
       }
 
-      if (isEmpty(data)) {
-        return Promise.reject(new NftscanError(NsError.NFTSCAN_DATA_EMPTY));
-      }
-
       return data;
     },
     (error: AxiosError) => {

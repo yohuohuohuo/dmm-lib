@@ -42,23 +42,28 @@ export default class NftscanSolanaTransaction extends BaseApi {
    * Retrieve transactions by collection.
    * - This endpoint returns a list of NFT transactions for an NFT collection. The transactions are sorted by timestamp with descending direction.
    * - details: {@link https://docs.nftscan.com/solana/getTransactionsByCollectionUsingGET}
-   * @param params The query params {@link TransactionParams}
+   * @param collection The NFT collection for the assets
+   * @param params The query params {@link BaseNsPaginationReqParam}
    * @returns Promise<{@link CommonTransactionResponse}>
    */
-  getTransactionsByCollection(params: TransactionParams): Promise<CommonTransactionResponse> {
-    const { collection, limit } = params;
-
+  getTransactionsByCollection(
+    collection: string,
+    params?: BaseNsPaginationReqParam,
+  ): Promise<CommonTransactionResponse> {
     if (isEmpty(collection)) {
       return missingParamError('collection');
     }
 
-    if (limit && limit > 100) {
-      return invalidLimitError(100);
+    if (params) {
+      const { limit } = params;
+      if (limit && limit > 100) {
+        return invalidLimitError(100);
+      }
     }
 
     return nftscanGet<BaseNsPaginationReqParam, CommonTransactionResponse>(
       this.config,
-      `${NftscanConst.API.solana.transaction.getTransactionsByCollection}`,
+      `${NftscanConst.API.solana.transaction.getTransactionsByCollection}${collection}`,
       params,
     );
   }

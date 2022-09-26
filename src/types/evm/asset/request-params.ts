@@ -72,15 +72,15 @@ export interface QueryAssetsByFiltersParams extends CommonAssetParams {
   /**
    * Filter of end block number
    */
-  block_number_end: number;
+  block_number_end?: number;
 
   /**
    * Filter of start block number
    */
-  block_number_start: number;
+  block_number_start?: number;
 
   /**
    * List of contract address. Maximum size is 50.
    */
-  contract_address_list: Array<string>;
+  contract_address_list?: Array<string>;
 }

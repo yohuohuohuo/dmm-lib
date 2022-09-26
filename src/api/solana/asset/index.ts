@@ -5,7 +5,7 @@ import { AssetParams } from '../../../types/solana/asset/request-params';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
 import BaseApi from '../../base-api';
-import { NsObject } from '../../../types/nftscan-type';
+import { BaseNsPaginationReqParam, NsObject } from '../../../types/nftscan-type';
 
 /**
  * Asset related API
@@ -71,8 +71,8 @@ export default class NftscanSolanaAsset extends BaseApi {
 
     if (params) {
       const { limit } = params;
-      if (limit && limit > 1000) {
-        return invalidLimitError(1000);
+      if (limit && limit > 100) {
+        return invalidLimitError(100);
       }
     }
 
@@ -90,13 +90,24 @@ export default class NftscanSolanaAsset extends BaseApi {
    * Retrieve assets by collection.
    * - This endpoint returns a set of NFTs that belong to an NFT collection. The NFTs are sorted by token address with ascending direction.
    * - details: {@link https://docs.nftscan.com/solana/getAssetsByCollectionUsingGET}
-   * @param params The query params {@link AssetParams}
+   * @param collection The NFT collection for the assets
+   * @param params The query params {@link BaseNsPaginationReqParam}
    * @returns Promise<{@link CommonAssetResponse}>
    */
-  getAssetsByCollection(params: AssetParams): Promise<CommonAssetResponse> {
-    return nftscanGet<AssetParams, CommonAssetResponse>(
+  getAssetsByCollection(collection: string, params?: BaseNsPaginationReqParam): Promise<CommonAssetResponse> {
+    if (isEmpty(collection)) {
+      return missingParamError('collection');
+    }
+
+    if (params) {
+      const { limit } = params;
+      if (limit && limit > 1000) {
+        return invalidLimitError(1000);
+      }
+    }
+    return nftscanGet<BaseNsPaginationReqParam, CommonAssetResponse>(
       this.config,
-      `${NftscanConst.API.solana.assets.getAssetsByCollection}`,
+      `${NftscanConst.API.solana.assets.getAssetsByCollection}${collection}`,
       params,
     );
   }
