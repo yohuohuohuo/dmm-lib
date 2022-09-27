@@ -84,7 +84,7 @@ export default class NftscanEvmTransaction extends BaseApi {
    * [PRO]
    * *****
    * Retrieve transactions by contract address.
-   * - This endpoint returns a list of NFT transactions for an NFT contract address. The transactions are sorted by timestamp with descending direction.
+   * - This endpoint returns a list of NFT transactions for a single NFT. The transactions are sorted by timestamp with descending direction.
    * - details: {@link https://docs.nftscan.com/nftscan/getTransactionByContractAddressAndTokenIdUsingGET}
    * @param contractAddress The NFT contract address
    * @param tokenId The NFT token ID. Can be in Hex or in Number
@@ -123,7 +123,7 @@ export default class NftscanEvmTransaction extends BaseApi {
    * [PRO]
    * *****
    * Retrieve transactions by to address.
-   * - This endpoint returns a list of NFT transactions filtered by the param to of the transaction. The transactions are sorted by timestamp with descending direction.
+   * - This endpoint returns a list of NFT transactions filtered by the param `to` of the transaction. The transactions are sorted by timestamp with descending direction.
    * - details: {@link https://docs.nftscan.com/nftscan/getTransactionByTxToUsingGET}
    * @param toAddress The to address of the transaction
    * @param params The query params {@link BaseNsPaginationReqParam}
@@ -158,15 +158,17 @@ export default class NftscanEvmTransaction extends BaseApi {
    * @param params The query params {@link QueryTransactionsByFiltersParams}
    * @returns Promise<{@link CommonAssetResponse}>
    */
-  queryTransactionsByFilters(params: QueryTransactionsByFiltersParams): Promise<CommonTransactionResponse> {
-    const { contract_address_list: contractAddressList, limit } = params;
+  queryTransactionsByFilters(params?: QueryTransactionsByFiltersParams): Promise<CommonTransactionResponse> {
+    if (params) {
+      const { contract_address_list: contractAddressList, limit } = params;
 
-    if (contractAddressList && contractAddressList.length > 50) {
-      return invalidParamError('contract_address_list', 'Maximum size is 50');
-    }
+      if (contractAddressList && contractAddressList.length > 50) {
+        return invalidParamError('contract_address_list', 'Maximum size is 50');
+      }
 
-    if (limit && limit > 100) {
-      return invalidLimitError(100);
+      if (limit && limit > 100) {
+        return invalidLimitError(100);
+      }
     }
 
     return nftscanPost<QueryTransactionsByFiltersParams, CommonTransactionResponse>(
@@ -184,7 +186,7 @@ export default class NftscanEvmTransaction extends BaseApi {
    * - This endpoint returns the transaction records queried based on the list of transaction hash.
    * - details: {@link https://docs.nftscan.com/nftscan/getAssetsByListUsingPOST_3}
    * @param txHashList List of transaction hash. Maximum size is 50.
-   * @returns Promise<{@link Array<Transaction>}>
+   * @returns Promise<Array<{@link Transaction}>>
    */
   queryTransactionsByTxHashList(txHashList: Array<string>): Promise<Array<Transaction>> {
     if (isEmpty(txHashList)) {

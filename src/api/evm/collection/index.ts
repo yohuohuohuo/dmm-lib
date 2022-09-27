@@ -43,7 +43,7 @@ export default class NftscanEvmCollection extends BaseApi {
    * - This endpoint returns information for a list of collections with the given ranking field. The collections are sorted by the given ranking field with the given sort direction.
    * - details: {@link https://docs.nftscan.com/nftscan/getRankingsUsingGET}
    * @param params The query params {@link QueryCollectionsByRankingParams}
-   * @returns Promise<{@link Array<Collection>}>
+   * @returns Promise<Array<{@link Collection}>>
    */
   getCollectionsByRanking(params?: QueryCollectionsByRankingParams): Promise<Array<Collection>> {
     if (params) {
@@ -69,7 +69,7 @@ export default class NftscanEvmCollection extends BaseApi {
    * - This endpoint returns information for a list of collections by applying search filters in the request body. The collections are sorted by deploy_block_number with ascending direction.
    * - details: {@link https://docs.nftscan.com/nftscan/getCollectionsUsingPOST}
    * @param params The query params {@link QueryCollectionsByFiltersParams}
-   * @returns Promise<{@link Array<Collection>}>
+   * @returns Promise<Array<{@link Collection}>>
    */
   queryCollectionsByFilters(params?: QueryCollectionsByFiltersParams): Promise<Array<Collection>> {
     if (params) {

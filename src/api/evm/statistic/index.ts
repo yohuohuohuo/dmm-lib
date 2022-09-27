@@ -34,10 +34,10 @@ export default class NftscanEvmStatistic extends BaseApi {
    * - This endpoint returns NFT trade ranking statistics referring to NFTScan Ranking({@link https://www.nftscan.com/ranking})
    * - details: {@link https://docs.nftscan.com/nftscan/getTradeUsingGET_1}
    * @param params The query params {@link QueryTradeRankingParams}
-   * @returns Promise<{@link QueryTradeRankingResponse}>
+   * @returns Promise<Array<{@link QueryTradeRankingResponse}>>
    */
-  getTradeRanking(params?: QueryTradeRankingParams): Promise<QueryTradeRankingResponse> {
-    return nftscanGet<QueryTradeRankingParams, QueryTradeRankingResponse>(
+  getTradeRanking(params?: QueryTradeRankingParams): Promise<Array<QueryTradeRankingResponse>> {
+    return nftscanGet<QueryTradeRankingParams, Array<QueryTradeRankingResponse>>(
       this.config,
       `${NftscanConst.API.evm.statistic.getTradeRanking}`,
       params,
@@ -52,9 +52,9 @@ export default class NftscanEvmStatistic extends BaseApi {
    * - This endpoint returns NFT collection ranking statistics.
    * - details: {@link https://docs.nftscan.com/nftscan/collectionRankingUsingGET}
    * @param params The query params {@link QueryCollectionRankingParams}
-   * @returns Promise<{@link QueryCollectionRankingResponse}>
+   * @returns Promise<Array<{@link QueryCollectionRankingResponse}>>
    */
-  getCollectionRanking(params?: QueryCollectionRankingParams): Promise<QueryCollectionRankingResponse> {
+  getCollectionRanking(params?: QueryCollectionRankingParams): Promise<Array<QueryCollectionRankingResponse>> {
     if (params) {
       const { limit } = params;
 
@@ -63,7 +63,7 @@ export default class NftscanEvmStatistic extends BaseApi {
       }
     }
 
-    return nftscanGet<QueryCollectionRankingParams, QueryCollectionRankingResponse>(
+    return nftscanGet<QueryCollectionRankingParams, Array<QueryCollectionRankingResponse>>(
       this.config,
       `${NftscanConst.API.evm.statistic.getCollectionRanking}`,
       params,
@@ -79,7 +79,7 @@ export default class NftscanEvmStatistic extends BaseApi {
    * - details: {@link https://docs.nftscan.com/nftscan/tradeDistributionUsingGET}
    * @param contractAddress The NFT contract address
    * @param time Can be 1h, 4h, 12h, 1d, 3d, 7d, 30d and 90d. 1d for default
-   * @returns Promise<{@link QueryCollectionTradeResponse}>
+   * @returns Promise<Array<{@link QueryCollectionTradeResponse}>>
    */
   getCollectionTrade(
     contractAddress: string,
@@ -92,12 +92,12 @@ export default class NftscanEvmStatistic extends BaseApi {
       | RangeType.d7
       | RangeType.d30
       | RangeType.d90,
-  ): Promise<QueryCollectionTradeResponse> {
+  ): Promise<Array<QueryCollectionTradeResponse>> {
     if (isEmpty(contractAddress)) {
       return missingParamError('contractAddress');
     }
 
-    return nftscanGet<NsObject, QueryCollectionTradeResponse>(
+    return nftscanGet<NsObject, Array<QueryCollectionTradeResponse>>(
       this.config,
       `${NftscanConst.API.evm.statistic.getCollectionTrade}${contractAddress}`,
       { time: time || RangeType.d1 },
@@ -113,7 +113,7 @@ export default class NftscanEvmStatistic extends BaseApi {
    * - details: {@link https://docs.nftscan.com/nftscan/trendingUsingGET_1}
    * @param contractAddress The NFT contract address
    * @param time Can be 1h, 4h, 12h, 1d, 3d, 7d, 30d and 90d. 1d for default
-   * @returns Promise<{@link QueryCollectionTrendingResponse}>
+   * @returns Promise<Array<{@link QueryCollectionTrendingResponse}>>
    */
   getCollectionTrending(
     contractAddress: string,
@@ -126,12 +126,12 @@ export default class NftscanEvmStatistic extends BaseApi {
       | RangeType.d7
       | RangeType.d30
       | RangeType.d90,
-  ): Promise<QueryCollectionTrendingResponse> {
+  ): Promise<Array<QueryCollectionTrendingResponse>> {
     if (isEmpty(contractAddress)) {
       return missingParamError('contractAddress');
     }
 
-    return nftscanGet<NsObject, QueryCollectionTrendingResponse>(
+    return nftscanGet<NsObject, Array<QueryCollectionTrendingResponse>>(
       this.config,
       `${NftscanConst.API.evm.statistic.getCollectionTrending}${contractAddress}`,
       { time: time || RangeType.d1 },
@@ -164,10 +164,10 @@ export default class NftscanEvmStatistic extends BaseApi {
    * - This endpoint returns NFT marketplace ranking statistics referring to NFTScan Marketplace({@link https://www.nftscan.com/marketplace}).
    * - details: {@link https://docs.nftscan.com/nftscan/getMarketplaceUsingGET}
    * @param params The query params {@link QueryMarketplaceRankingParams}
-   * @returns Promise<{@link QueryMarketplaceRankingResponse}>
+   * @returns Promise<Array<{@link QueryMarketplaceRankingResponse}>>
    */
-  getMarketplaceRanking(params?: QueryMarketplaceRankingParams): Promise<QueryMarketplaceRankingResponse> {
-    return nftscanGet<QueryMarketplaceRankingParams, QueryMarketplaceRankingResponse>(
+  getMarketplaceRanking(params?: QueryMarketplaceRankingParams): Promise<Array<QueryMarketplaceRankingResponse>> {
+    return nftscanGet<QueryMarketplaceRankingParams, Array<QueryMarketplaceRankingResponse>>(
       this.config,
       `${NftscanConst.API.evm.statistic.getMarketplaceRanking}`,
       params,
@@ -178,10 +178,10 @@ export default class NftscanEvmStatistic extends BaseApi {
    * Obtain market cap ranking statistics
    * - This endpoint returns NFT market cap ranking statistics.
    * - details: {@link https://docs.nftscan.com/nftscan/getMarketCapUsingGET}
-   * @returns Promise<{@link QueryMarketCapRankingResponse}>
+   * @returns Promise<Array<{@link QueryMarketCapRankingResponse}>>
    */
-  getMarketCapRanking(): Promise<QueryMarketCapRankingResponse> {
-    return nftscanGet<NsObject, QueryMarketCapRankingResponse>(
+  getMarketCapRanking(): Promise<Array<QueryMarketCapRankingResponse>> {
+    return nftscanGet<NsObject, Array<QueryMarketCapRankingResponse>>(
       this.config,
       `${NftscanConst.API.evm.statistic.getMarketCapRanking}`,
     );
@@ -213,12 +213,12 @@ export default class NftscanEvmStatistic extends BaseApi {
    * - This endpoint returns NFT mint ranking statistics referring to NFTScan Discover({@link https://www.nftscan.com/analytics/discover}) for the section of 'Top Mints'.
    * - details: {@link https://docs.nftscan.com/nftscan/getMintUsingGET}
    * @param time The time range (1h 6h 12h 1d 3d). 1d for default
-   * @returns Promise<{@link QueryMintRankingResponse}>
+   * @returns Promise<Array<{@link QueryMintRankingResponse}>>
    */
   getMintRanking(
     time?: RangeType.h1 | RangeType.h6 | RangeType.h12 | RangeType.d1 | RangeType.d3,
-  ): Promise<QueryMintRankingResponse> {
-    return nftscanGet<NsObject, QueryMintRankingResponse>(
+  ): Promise<Array<QueryMintRankingResponse>> {
+    return nftscanGet<NsObject, Array<QueryMintRankingResponse>>(
       this.config,
       `${NftscanConst.API.evm.statistic.getMintRanking}`,
       { time: time || RangeType.d1 },
@@ -248,13 +248,13 @@ export default class NftscanEvmStatistic extends BaseApi {
    * - details: {@link https://docs.nftscan.com/nftscan/getTradersUsingGET}
    * @param time The time range (1h 6h 12h 1d 3d). 1d for default
    * @param tradeType Can be buy or sell. buy for default
-   * @returns Promise<{@link QueryTradersRankingResponse}>
+   * @returns Promise<Array<{@link QueryTradersRankingResponse}>>
    */
   getTradersRanking(
     time?: RangeType.h1 | RangeType.h6 | RangeType.h12 | RangeType.d1 | RangeType.d3,
     tradeType?: TradeType,
-  ): Promise<QueryTradersRankingResponse> {
-    return nftscanGet<NsObject, QueryTradersRankingResponse>(
+  ): Promise<Array<QueryTradersRankingResponse>> {
+    return nftscanGet<NsObject, Array<QueryTradersRankingResponse>>(
       this.config,
       `${NftscanConst.API.evm.statistic.getTradersRanking}`,
       { time: time || RangeType.d1, trade_type: tradeType || TradeType.BUY },
@@ -265,10 +265,10 @@ export default class NftscanEvmStatistic extends BaseApi {
    * Obtain traders ranking statistics.
    * - This endpoint returns NFT gas ranking statistics referring to NFTScan Gas Tracker({@link https://www.nftscan.com/analytics/tracker}).
    * - details: {@link https://docs.nftscan.com/nftscan/getGasUsingGET}
-   * @returns Promise<{@link QueryGasRankingResponse}>
+   * @returns Promise<Array<{@link QueryGasRankingResponse}>>
    */
-  getGasRanking(): Promise<QueryGasRankingResponse> {
-    return nftscanGet<NsObject, QueryGasRankingResponse>(
+  getGasRanking(): Promise<Array<QueryGasRankingResponse>> {
+    return nftscanGet<NsObject, Array<QueryGasRankingResponse>>(
       this.config,
       `${NftscanConst.API.evm.statistic.getGasRanking}`,
     );

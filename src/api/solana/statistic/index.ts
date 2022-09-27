@@ -13,10 +13,10 @@ export default class NftscanSolanaStatistic extends BaseApi {
    * - This endpoint returns NFT trade ranking statistics referring to NFTScan Ranking({@link https://solana.nftscan.com/analytics/ranking})
    * - details: {@link https://docs.nftscan.com/solana/getTradeUsingGET}
    * @param params The query params {@link QueryTradeRankingParams}
-   * @returns Promise<{@link QueryTradeRankingResponse}>
+   * @returns Promise<Array<{@link QueryTradeRankingResponse}>>
    */
-  getTradeRanking(params?: QueryTradeRankingParams): Promise<QueryTradeRankingResponse> {
-    return nftscanGet<QueryTradeRankingParams, QueryTradeRankingResponse>(
+  getTradeRanking(params?: QueryTradeRankingParams): Promise<Array<QueryTradeRankingResponse>> {
+    return nftscanGet<QueryTradeRankingParams, Array<QueryTradeRankingResponse>>(
       this.config,
       `${NftscanConst.API.evm.statistic.getTradeRanking}`,
       params,

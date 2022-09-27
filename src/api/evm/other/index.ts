@@ -35,9 +35,9 @@ export default class NftscanEvmOther extends BaseApi {
    * - This endpoint returns information for ERC721 and ERC1155 NFT amount owned by an account address according to the search list in the request body.
    * - details: {@link https://docs.nftscan.com/nftscan/getAssetAmountByAccountsUsingPOST}
    * @param accountAddressList List of account address. Maximum size is 50.
-   * @returns Promise<{@link QueryAssestAmountResponse}>
+   * @returns Promise<Array<{@link QueryAssestAmountResponse}>>
    */
-  queryAssestAmountByAccounts(accountAddressList: Array<string>): Promise<QueryAssestAmountResponse> {
+  queryAssestAmountByAccounts(accountAddressList: Array<string>): Promise<Array<QueryAssestAmountResponse>> {
     if (isEmpty(accountAddressList)) {
       return missingParamError('accountAddressList');
     }
@@ -46,7 +46,7 @@ export default class NftscanEvmOther extends BaseApi {
       return invalidParamError('accountAddressList', 'Maximum size is 50');
     }
 
-    return nftscanPost<NsObject, QueryAssestAmountResponse>(
+    return nftscanPost<NsObject, Array<QueryAssestAmountResponse>>(
       this.config,
       `${NftscanConst.API.evm.other.queryAssestAmountByAccounts}`,
       { account_address_list: accountAddressList },
