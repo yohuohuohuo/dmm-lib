@@ -6,10 +6,10 @@ export default defineUserConfig({
   description: "Quick access to Web3 via NFTScan",
   base:'/dmm-lib/',
   theme: defaultTheme({
-    navbar: [
-      { text: "bar1", link: "/guide/" },
-      { text: "bar2", link: "/api/" },
-    ],
+    // navbar: [
+    //   { text: "bar1", link: "/guide/" },
+    //   { text: "bar2", link: "/api/" },
+    // ],
     sidebar: [
       { text: "sidebar1", link: "/guide/" },
       { text: "sidebar2", link: "/api/" },
