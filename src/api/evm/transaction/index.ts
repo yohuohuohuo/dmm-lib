@@ -83,7 +83,7 @@ export default class NftscanEvmTransaction extends BaseApi {
    * *****
    * [PRO]
    * *****
-   * Retrieve transactions by contract address.
+   * Retrieve transactions by contract address and token ID.
    * - This endpoint returns a list of NFT transactions for a single NFT. The transactions are sorted by timestamp with descending direction.
    * - details: {@link https://docs.nftscan.com/nftscan/getTransactionByContractAddressAndTokenIdUsingGET}
    * @param contractAddress The NFT contract address
@@ -152,7 +152,7 @@ export default class NftscanEvmTransaction extends BaseApi {
    * *****
    * [PRO]
    * *****
-   * Retrieve transactions with filters
+   * Retrieve transactions with filters.
    * - This endpoint returns a list of NFT transactions by applying search filters in the request body. The transactions are sorted by timestamp with descending direction.
    * - details: {@link https://docs.nftscan.com/nftscan/getAssetsByListUsingPOST_2}
    * @param params The query params {@link QueryTransactionsByFiltersParams}
