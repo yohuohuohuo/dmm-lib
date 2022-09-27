@@ -1,5 +1,4 @@
-import { initEvmHttpConfig } from '../../http/nftscan.http';
-import { NftscanEvmConfig } from '../../types/nftscan-type';
+import { NftscanConfig } from '../../types/nftscan-type';
 import BaseApi from '../base-api';
 import NftscanEvmAsset from './asset';
 import NftscanEvmCollection from './collection';
@@ -16,12 +15,7 @@ import NftscanEvmTransaction from './transaction';
  * To use our APIs, You need to register an account on NFTScan open platform OpenAPI Platform({@link https://developer.nftscan.com/})
  * and get your API key for NFTScan SDK initialize config.
  */
-export default class NftscanEvm extends BaseApi {
-  constructor(config: NftscanEvmConfig) {
-    super(config);
-    initEvmHttpConfig(config);
-  }
-
+export default class NftscanEvm extends BaseApi<NftscanConfig> {
   /**
    * The `asset` object contains methods for NFTScan's EVM-like chain asset API.
    */

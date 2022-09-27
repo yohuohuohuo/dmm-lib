@@ -1,6 +1,6 @@
 import { nftscanGet, nftscanPost } from '../../../http/nftscan.http';
 import { invalidLimitError, invalidParamError, missingParamError } from '../../../types/nftscan-error';
-import { NsObject } from '../../../types/nftscan-type';
+import { NftscanConfig, NsObject } from '../../../types/nftscan-type';
 import { QueryCollectionsByFiltersParams } from '../../../types/solana/collection/request-params';
 import { Collection } from '../../../types/solana/collection/response-data';
 import { isEmpty } from '../../../util/common.util';
@@ -10,7 +10,7 @@ import BaseApi from '../../base-api';
 /**
  * Collection related API
  */
-export default class NftscanSolanaCollection extends BaseApi {
+export default class NftscanSolanaCollection extends BaseApi<NftscanConfig> {
   /**
    * *****
    * [PRO]

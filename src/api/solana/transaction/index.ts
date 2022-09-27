@@ -1,6 +1,6 @@
 import { nftscanGet } from '../../../http/nftscan.http';
 import { invalidLimitError, missingParamError } from '../../../types/nftscan-error';
-import { BaseNsPaginationReqParam } from '../../../types/nftscan-type';
+import { BaseNsPaginationReqParam, NftscanConfig } from '../../../types/nftscan-type';
 import { TransactionParams } from '../../../types/solana/transaction/request-params';
 import { CommonTransactionResponse } from '../../../types/solana/transaction/response-data';
 import { isEmpty } from '../../../util/common.util';
@@ -10,7 +10,7 @@ import BaseApi from '../../base-api';
 /**
  * Transaction related API
  */
-export default class NftscanSolanaTransaction extends BaseApi {
+export default class NftscanSolanaTransaction extends BaseApi<NftscanConfig> {
   /**
    * Retrieve transactions by an account.
    * - This endpoint returns a list of NFT transactions for an account address. The transactions are sorted by timestamp with descending direction.

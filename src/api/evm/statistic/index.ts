@@ -20,7 +20,7 @@ import {
   QueryVolumeIn24hResponse,
 } from '../../../types/evm/statistic/response-data';
 import { invalidLimitError, missingParamError } from '../../../types/nftscan-error';
-import { NsObject, RangeType, TradeType } from '../../../types/nftscan-type';
+import { NftscanConfig, NsObject, RangeType, TradeType } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
 import BaseApi from '../../base-api';
@@ -28,7 +28,7 @@ import BaseApi from '../../base-api';
 /**
  * Statistic related API
  */
-export default class NftscanEvmStatistic extends BaseApi {
+export default class NftscanEvmStatistic extends BaseApi<NftscanConfig> {
   /**
    * Obtain trade ranking statistics.
    * - This endpoint returns NFT trade ranking statistics referring to NFTScan Ranking({@link https://www.nftscan.com/ranking})

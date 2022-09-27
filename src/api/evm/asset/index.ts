@@ -9,7 +9,7 @@ import {
 } from '../../../types/evm/asset/request-params';
 import { QueryAllAssetsResponse, Asset, CommonAssetResponse } from '../../../types/evm/asset/response-data';
 import { invalidLimitError, invalidParamError, missingParamError } from '../../../types/nftscan-error';
-import { ErcType, NsObject } from '../../../types/nftscan-type';
+import { ErcType, NftscanConfig, NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
 import BaseApi from '../../base-api';
@@ -17,7 +17,7 @@ import BaseApi from '../../base-api';
 /**
  * Asset related API
  */
-export default class NftscanEvmAsset extends BaseApi {
+export default class NftscanEvmAsset extends BaseApi<NftscanConfig> {
   /**
    * Retrieve assets owned by an account.
    * - This endpoint returns a set of NFTs owned by an account address.

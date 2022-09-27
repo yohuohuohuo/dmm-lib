@@ -1,4 +1,4 @@
-import { initHttpResponse } from '../http/nftscan.http';
+import { initHttpConfig } from '../http/nftscan.http';
 
 export default class NftscanInit {
   static created = false;
@@ -8,6 +8,6 @@ export default class NftscanInit {
       return;
     }
     this.created = true;
-    initHttpResponse();
+    initHttpConfig();
   }
 }

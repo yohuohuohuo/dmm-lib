@@ -5,12 +5,12 @@ import { AssetParams } from '../../../types/solana/asset/request-params';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
 import BaseApi from '../../base-api';
-import { BaseNsPaginationReqParam, NsObject } from '../../../types/nftscan-type';
+import { BaseNsPaginationReqParam, NftscanConfig, NsObject } from '../../../types/nftscan-type';
 
 /**
  * Asset related API
  */
-export default class NftscanSolanaAsset extends BaseApi {
+export default class NftscanSolanaAsset extends BaseApi<NftscanConfig> {
   /**
    * Retrieve assets owned by an account.
    * - This endpoint returns a set of NFTs owned by an account address.

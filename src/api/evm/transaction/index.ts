@@ -2,7 +2,7 @@ import { nftscanGet, nftscanPost } from '../../../http/nftscan.http';
 import { QueryTransactionsByFiltersParams, TransactionParams } from '../../../types/evm/transaction/request-params';
 import { CommonTransactionResponse, Transaction } from '../../../types/evm/transaction/response-data';
 import { invalidLimitError, invalidParamError, missingParamError } from '../../../types/nftscan-error';
-import { BaseNsPaginationReqParam, NsObject } from '../../../types/nftscan-type';
+import { BaseNsPaginationReqParam, NftscanConfig, NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
 import BaseApi from '../../base-api';
@@ -10,7 +10,7 @@ import BaseApi from '../../base-api';
 /**
  * Transaction related API
  */
-export default class NftscanEvmTransaction extends BaseApi {
+export default class NftscanEvmTransaction extends BaseApi<NftscanConfig> {
   /**
    * *****
    * [PRO]
