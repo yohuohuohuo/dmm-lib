@@ -118,8 +118,8 @@ The SDK currently supports all of the [NFTScan API](https://developer.nftscan.co
 
 As follows:
 
-- ### NFTScan API of EVM
-  - ### Retrieve Assets (`new NftscanEvm().asset.*`)
+- #### NFTScan API of EVM
+  - ##### Retrieve Assets (`new NftscanEvm().asset.*`)
     - `getAssetsByAccount()`: Retrieve assets owned by an account.
     - `getAllAssets()`: Retrieve all assets owned by an account group by contract address.
     - `getAccountMinted()`: Retrieve assets minted by an account.
@@ -127,18 +127,18 @@ As follows:
     - `getAssetsByContractAndTokenId()`: Retrieve an asset by contract address and token ID.
     - ***[PRO]*** `queryAssetsInBatches`: Retrieve assets by list of contract address and token ID.
     - ***[PRO]*** `queryAssetsByFilters()`: Retrieve assets with filters.
-  - ### Retrieve Transactions (`new NftscanEvm().transaction.*`)
+  - ##### Retrieve Transactions (`new NftscanEvm().transaction.*`)
     - ***[PRO]*** `getTransactionsByAccount()`: Retrieve transactions by an account.
     - ***[PRO]*** `getTransactionsByContract()`: Retrieve transactions by contract address.
     - ***[PRO]*** `getTransactionsByContractAndTokenId()`: Retrieve transactions by contract address and token ID.
     - ***[PRO]*** `getTransactionsByToAddress()`: Retrieve transactions by to address.
     - ***[PRO]*** `queryTransactionsByFilters()`: Retrieve transactions with filters.
     - ***[PRO]*** `queryTransactionsByTxHashList()`: Retrieve transactions by the list of transaction hash.
-  - ### Retrieve Collections (`new NftscanEvm().collection.*`)
+  - ##### Retrieve Collections (`new NftscanEvm().collection.*`)
     - ***[PRO]*** `getCollectionsByContract()`: Retrieve a collection by contract address.
     - ***[PRO]*** `getCollectionsByRanking()`: Retrieve collections by ranking.
     - ***[PRO]*** `queryCollectionsByFilters()`: Retrieve collections with filters.
-  - ### Statistics (`new NftscanEvm().statistic.*`)
+  - ##### Statistics (`new NftscanEvm().statistic.*`)
     - `getTradeRanking()`: Obtain trade ranking statistics.
     - ***[PRO]*** `getCollectionRanking()`: Obtain collection ranking statistics.
     - ***[PRO]*** `getCollectionTrade()`: Obtain collection trade distribution.
@@ -152,28 +152,28 @@ As follows:
     - `getTradersRanking()`: Obtain traders ranking statistics.
     - `getGasRanking()`: Obtain traders ranking statistics.
     - `getVolumeIn24h()`: Obtain 24h volume statistics.
-   - ### Other (`new NftscanEvm().other.*`)
+   - ##### Other (`new NftscanEvm().other.*`)
      - `getBlockNumber()`: Obtain latest block number.
      - ***[PRO]*** `queryAssestAmountByAccounts()`: Obtain asset amount owned by accounts.
      - ***[PRO]*** `getAssetOwnerByContract()`: Obtain asset owner amount by contract address.
      - ***[PRO]*** `getAssetOwnerByContractAndTokenId()`: Obtain asset owner amount by contract address and token ID.
      - ***[PRO]*** `refreshMetadata()`: Submit a task for refreshing NFT metadata.
   
-- ### NFTScan API of Solana
-  - ### Retrieve Assets (`new NftscanSolana().asset.*`)
+- #### NFTScan API of Solana
+  - ##### Retrieve Assets (`new NftscanSolana().asset.*`)
     - `getAssetsByAccount()`: Retrieve assets owned by an account.
     - `getAllAssets()`: Retrieve all assets owned by an account group by collection.
     - `getAccountMinted()`: Retrieve assets minted by an account.
     - ***[PRO]*** `getAssetsByCollection()`: Retrieve assets by collection.
     - `getAssetsByTokenAddress()`: Retrieve an asset by token address.
-  - ### Retrieve Transactions (`new NftscanSolana().transaction.*`)
+  - ##### Retrieve Transactions (`new NftscanSolana().transaction.*`)
     - `getTransactionsByAccount()`: Retrieve transactions by an account.
     - `getTransactionsByCollection()`: Retrieve transactions by collection.
     - `getTransactionsByTokenAddress()`: Retrieve transactions by token address.
-  - ### Retrieve Collections (`new NftscanSolana().collection.*`)
+  - ##### Retrieve Collections (`new NftscanSolana().collection.*`)
     - ***[PRO]*** `getCollection()`: Retrieve a collection.
     - ***[PRO]*** `queryCollectionsByFilters()`: Retrieve collections with filters.
-  - ### Statistics (`new NftscanSolana().statistic.*`)
+  - ##### Statistics (`new NftscanSolana().statistic.*`)
     - `getTradeRanking()`: Obtain trade ranking statistics.
 
 ## More
