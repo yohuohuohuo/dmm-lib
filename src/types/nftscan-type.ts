@@ -77,7 +77,7 @@ export interface NsObject {
  * NFTScan SDK's EVM-like blockchain config properties.
  * To use our SDK, You need to register an account on NFTScan open platform({@link https://developer.nftscan.com/}) and get your API-KEY for making calls to API services.
  */
-export interface NftscanEvmConfig {
+export interface NftscanConfig {
   /**
    * The API key of NFTScan
    */

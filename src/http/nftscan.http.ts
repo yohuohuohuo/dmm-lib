@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import axios, { AxiosError } from 'axios';
 import { NftscanError } from '../types/nftscan-error';
-import { EvmChain, NftscanEvmConfig, NftscanSolanaConfig, NsError } from '../types/nftscan-type';
+import { NftscanConfig, NsError } from '../types/nftscan-type';
 import { isEmpty } from '../util/common.util';
 import NftscanConst from '../util/nftscan.const';
 
@@ -22,25 +22,16 @@ function apiChainError() {
 
 /**
  * Configure the axios interceptor
- * @param apiKey The API key of NFTScan
- * @param chain The name of the blockchain you will be requesting
  */
-function initHttpConfig(apiKey: string, chain: EvmChain | 'solana') {
+export function initHttpConfig() {
   axios.interceptors.request.use(
     (config) => {
-      return {
-        ...config,
-        baseURL: NftscanConst.BASE_URL[chain],
-        headers: { ...config.headers, 'X-API-KEY': apiKey },
-      };
+      return config;
     },
     (error) => {
       return Promise.reject(new NftscanError(NsError.REQUEST_ERROR, error.message));
     },
   );
-}
-
-export function initHttpResponse() {
   axios.interceptors.response.use(
     (response) => {
       if (response.status !== 200) {
@@ -64,71 +55,47 @@ export function initHttpResponse() {
   );
 }
 
-export function initEvmHttpConfig(nftscanConfig: NftscanEvmConfig) {
-  const { apiKey, chain } = nftscanConfig;
-
-  if (isEmpty(apiKey)) {
-    apiKeyError();
-    return;
-  }
-
-  if (isEmpty(NftscanConst.BASE_URL[chain])) {
-    apiChainError();
-    return;
-  }
-
-  initHttpConfig(apiKey, chain);
-}
-
-export function initSolanaHttpConfig(nftscanConfig: NftscanSolanaConfig) {
-  const { apiKey } = nftscanConfig;
-
-  if (isEmpty(apiKey)) {
-    apiKeyError();
-    return;
-  }
-
-  initHttpConfig(apiKey, 'solana');
-}
-
 /**
  * NFTScan SDK's wrapper function of send get http request
- * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanEvmConfig}
+ * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanConfig}
  * @param url The API url
  * @param params The axios get params
  * @returns Promise
  */
-export function nftscanGet<T, V>(
-  nftscanConfig: NftscanEvmConfig | NftscanSolanaConfig,
-  url: string,
-  params?: T,
-): Promise<V> {
-  const { apiKey } = nftscanConfig;
+export function nftscanGet<T, V>(nftscanConfig: NftscanConfig, url: string, params?: T): Promise<V> {
+  const { apiKey, chain } = nftscanConfig;
   if (isEmpty(apiKey)) {
     return apiKeyError();
   }
 
-  return axios.get(url, {
+  const baseURL = NftscanConst.BASE_URL[chain];
+  if (isEmpty(baseURL)) {
+    return apiChainError();
+  }
+
+  return axios.get(`${baseURL}${url}`, {
     params,
+    headers: { 'X-API-KEY': apiKey },
   });
 }
 
 /**
  * NFTScan SDK's wrapper function of send post http request
- * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanEvmConfig}
+ * @param nftscanConfig NFTScan SDK Initialization parameters {@link NftscanConfig}
  * @param url The API url
  * @param data The axios post data
  * @returns Promise
  */
-export function nftscanPost<T, V>(
-  nftscanConfig: NftscanEvmConfig | NftscanSolanaConfig,
-  url: string,
-  data?: T,
-): Promise<V> {
-  const { apiKey } = nftscanConfig;
+export function nftscanPost<T, V>(nftscanConfig: NftscanConfig, url: string, data?: T): Promise<V> {
+  const { apiKey, chain } = nftscanConfig;
   if (isEmpty(apiKey)) {
     return apiKeyError();
   }
 
-  return axios.post(url, data);
+  const baseURL = NftscanConst.BASE_URL[chain];
+  if (isEmpty(baseURL)) {
+    return apiChainError();
+  }
+
+  return axios.post(`${baseURL}${url}`, data, { headers: { 'X-API-KEY': apiKey } });
 }

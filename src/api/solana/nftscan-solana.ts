@@ -1,5 +1,4 @@
-import { initSolanaHttpConfig } from '../../http/nftscan.http';
-import { NftscanSolanaConfig } from '../../types/nftscan-type';
+import { EvmChain, NftscanConfig, NftscanSolanaConfig } from '../../types/nftscan-type';
 import BaseApi from '../base-api';
 import NftscanSolanaAsset from './asset';
 import NftscanSolanaCollection from './collection';
@@ -17,10 +16,9 @@ import NftscanSolanaTransaction from './transaction';
  * To use our APIs, You need to register an account on NFTScan open platform OpenAPI Platform({@link https://developer.nftscan.com/})
  * and get your API key for NFTScan SDK initialize config.
  */
-export default class NftscanSolana extends BaseApi {
+export default class NftscanSolana extends BaseApi<NftscanConfig> {
   constructor(config: NftscanSolanaConfig) {
-    super(config);
-    initSolanaHttpConfig(config);
+    super({ apiKey: config.apiKey, chain: 'solana' as EvmChain });
   }
 
   /**

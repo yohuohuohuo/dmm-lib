@@ -8,7 +8,7 @@ import {
   RefreshMetadataResponse,
 } from '../../../types/evm/other/response-data';
 import { invalidLimitError, invalidParamError, missingParamError } from '../../../types/nftscan-error';
-import { NsObject } from '../../../types/nftscan-type';
+import { NftscanConfig, NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
 import BaseApi from '../../base-api';
@@ -16,7 +16,7 @@ import BaseApi from '../../base-api';
 /**
  * The other API
  */
-export default class NftscanEvmOther extends BaseApi {
+export default class NftscanEvmOther extends BaseApi<NftscanConfig> {
   /**
    * Obtain latest block number.
    * - This endpoint returns the latest block number NFTScan has reached to.

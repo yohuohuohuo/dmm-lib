@@ -1,6 +1,6 @@
 {
   "name": "dmm-lib",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "description": "yohuohuohuo library",
   "main": "dist/cjs/index.js",
   "main-es": "dist/es/index.js",
@@ -85,7 +85,6 @@
     }
   },
   "dependencies": {
-    "@types/estree": "^0.0.51",
     "axios": "^0.27.2"
   }
 }

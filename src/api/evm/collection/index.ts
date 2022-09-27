@@ -5,7 +5,7 @@ import {
 } from '../../../types/evm/collection/request-params';
 import { Collection } from '../../../types/evm/collection/response-data';
 import { invalidLimitError, missingParamError } from '../../../types/nftscan-error';
-import { NsObject } from '../../../types/nftscan-type';
+import { NftscanConfig, NsObject } from '../../../types/nftscan-type';
 import { isEmpty } from '../../../util/common.util';
 import NftscanConst from '../../../util/nftscan.const';
 import BaseApi from '../../base-api';
@@ -13,7 +13,7 @@ import BaseApi from '../../base-api';
 /**
  * Collection related API
  */
-export default class NftscanEvmCollection extends BaseApi {
+export default class NftscanEvmCollection extends BaseApi<NftscanConfig> {
   /**
    * *****
    * [PRO]

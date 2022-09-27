@@ -3,14 +3,14 @@ export default class NftscanConst {
    * NFTScan's API base url
    */
   static readonly BASE_URL = {
-    eth: 'https://restapi.nftscan.com/api/',
-    bnb: 'https://bnbapi.nftscan.com/api/',
-    arbitrum: 'https://arbitrumapi.nftscan.com/api/',
-    glmr: 'https://moonbeamapi.nftscan.com/api/',
-    matic: 'https://polygonapi.nftscan.com/api/',
-    optimism: 'https://optimismapi.nftscan.com/api/',
-    solana: 'https://solanaapi.nftscan.com/api/',
+    eth: 'https://restapi.nftscan.com/api',
+    bnb: 'https://bnbapi.nftscan.com/api',
+    arbitrum: 'https://arbitrumapi.nftscan.com/api',
+    glmr: 'https://moonbeamapi.nftscan.com/api',
+    matic: 'https://polygonapi.nftscan.com/api',
+    optimism: 'https://optimismapi.nftscan.com/api',
     platon: 'https://platonapi.nftscan.com/api',
+    solana: 'https://solanaapi.nftscan.com/api',
   };
 
   /**
