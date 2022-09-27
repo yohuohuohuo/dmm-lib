@@ -18,6 +18,8 @@ The SDK currently supports the following chains:
 | PlatON     | platonapi.nftscan.com   | platon       |
 | Solana     | solanaapi.nftscan.com   | solana       |
 
+*The value of **Abbreviation** is used in the SDK as an initialization configuration parameter.*
+
 ## Getting started
 
 via `npm`:
@@ -44,7 +46,20 @@ const config = {
 
 const evm = new NftscanEvm(config);
 ```
-The `new NftscanEvm()` returns an object that can query the EVM-like chain, For here it is `EvmChain.ETH`, which stand for the Ethereum blockchain. See more EVM-like chain at [EvmChain](./src/types/nftscan-type.ts).
+The `new NftscanEvm()` returns an object that can query the EVM-like chain, for here it is `EvmChain.ETH`, which stand for the Ethereum blockchain. 
+
+The complete enumeration value of `EvmChain` includes the following:
+```ts
+export enum EvmChain {
+  ETH = 'eth',
+  BNB = 'bnb',
+  ARBITRUM = 'arbitrum',
+  GLMR = 'glmr',
+  MATIC = 'matic',
+  OPTIMISM = 'optimism',
+  PLATON = 'platon',
+}
+```
 
 And then you can use the object `evm` to access to the NFTScan API, form example `getAssetsByAccount`, which can retrieve the assets owned by an account.
 
@@ -84,7 +99,7 @@ sol.asset
 ```
 
 ### Pagination
-In general, NFTScan's API that supports pagination will uses the query params `cursor` as the paging parameter, The return data of the API call will contain the attribute `next`, you can pass in the `next` to the next call.
+In general, NFTScan's API that supports pagination will uses the query params `cursor` as the paging parameter, The return data of the API call will contain the attribute `next`, you can pass in the `next` value to the next call.
 
 For example:
 ```ts
@@ -97,9 +112,72 @@ const { content, next } = await evm.asset.getAccountMinted("<ACCOUNT_ADDRESS>", 
 // update the nextCursor
 nextCursor = next;
 ```
-### More
+
+## NFTScan SDK API
+The SDK currently supports all of the [NFTScan API](https://developer.nftscan.com/) endpoints, The distribution of the API is consistent with the [NFTScan API](https://developer.nftscan.com/). 
+
+As follows:
+
+- #### NFTScan API of EVM
+  - ##### Retrieve Assets (`new NftscanEvm().asset.*`)
+    - `getAssetsByAccount()`: Retrieve assets owned by an account.
+    - `getAllAssets()`: Retrieve all assets owned by an account group by contract address.
+    - `getAccountMinted()`: Retrieve assets minted by an account.
+    - ***[PRO]*** `getAssetsByContract()`: Retrieve assets by contract address.
+    - `getAssetsByContractAndTokenId()`: Retrieve an asset by contract address and token ID.
+    - ***[PRO]*** `queryAssetsInBatches`: Retrieve assets by list of contract address and token ID.
+    - ***[PRO]*** `queryAssetsByFilters()`: Retrieve assets with filters.
+  - ##### Retrieve Transactions (`new NftscanEvm().transaction.*`)
+    - ***[PRO]*** `getTransactionsByAccount()`: Retrieve transactions by an account.
+    - ***[PRO]*** `getTransactionsByContract()`: Retrieve transactions by contract address.
+    - ***[PRO]*** `getTransactionsByContractAndTokenId()`: Retrieve transactions by contract address and token ID.
+    - ***[PRO]*** `getTransactionsByToAddress()`: Retrieve transactions by to address.
+    - ***[PRO]*** `queryTransactionsByFilters()`: Retrieve transactions with filters.
+    - ***[PRO]*** `queryTransactionsByTxHashList()`: Retrieve transactions by the list of transaction hash.
+  - ##### Retrieve Collections (`new NftscanEvm().collection.*`)
+    - ***[PRO]*** `getCollectionsByContract()`: Retrieve a collection by contract address.
+    - ***[PRO]*** `getCollectionsByRanking()`: Retrieve collections by ranking.
+    - ***[PRO]*** `queryCollectionsByFilters()`: Retrieve collections with filters.
+  - ##### Statistics (`new NftscanEvm().statistic.*`)
+    - `getTradeRanking()`: Obtain trade ranking statistics.
+    - ***[PRO]*** `getCollectionRanking()`: Obtain collection ranking statistics.
+    - ***[PRO]*** `getCollectionTrade()`: Obtain collection trade distribution.
+    - ***[PRO]*** `getCollectionTrending()`: Obtain collection trending statistics.
+    - ***[PRO]*** `getAccountOverview()`: Obtain account overview statistics.
+    - `getMarketplaceRanking()`: Obtain marketplace ranking statistics.
+    - `getMarketCapRanking()`: Obtain market cap ranking statistics
+    - ***[PRO]*** `getCollectionStatistics()`: Obtain collection statistics.
+    - `getMintRanking()`: Obtain mint ranking statistics.
+    - `getMintAmount()`: Obtain mint amount statistics.
+    - `getTradersRanking()`: Obtain traders ranking statistics.
+    - `getGasRanking()`: Obtain traders ranking statistics.
+    - `getVolumeIn24h()`: Obtain 24h volume statistics.
+   - ##### Other (`new NftscanEvm().other.*`)
+     - `getBlockNumber()`: Obtain latest block number.
+     - ***[PRO]*** `queryAssestAmountByAccounts()`: Obtain asset amount owned by accounts.
+     - ***[PRO]*** `getAssetOwnerByContract()`: Obtain asset owner amount by contract address.
+     - ***[PRO]*** `getAssetOwnerByContractAndTokenId()`: Obtain asset owner amount by contract address and token ID.
+     - ***[PRO]*** `refreshMetadata()`: Submit a task for refreshing NFT metadata.
+  
+- #### NFTScan API of Solana
+  - ##### Retrieve Assets (`new NftscanSolana().asset.*`)
+    - `getAssetsByAccount()`: Retrieve assets owned by an account.
+    - `getAllAssets()`: Retrieve all assets owned by an account group by collection.
+    - `getAccountMinted()`: Retrieve assets minted by an account.
+    - ***[PRO]*** `getAssetsByCollection()`: Retrieve assets by collection.
+    - `getAssetsByTokenAddress()`: Retrieve an asset by token address.
+  - ##### Retrieve Transactions (`new NftscanSolana().transaction.*`)
+    - `getTransactionsByAccount()`: Retrieve transactions by an account.
+    - `getTransactionsByCollection()`: Retrieve transactions by collection.
+    - `getTransactionsByTokenAddress()`: Retrieve transactions by token address.
+  - ##### Retrieve Collections (`new NftscanSolana().collection.*`)
+    - ***[PRO]*** `getCollection()`: Retrieve a collection.
+    - ***[PRO]*** `queryCollectionsByFilters()`: Retrieve collections with filters.
+  - ##### Statistics (`new NftscanSolana().statistic.*`)
+    - `getTradeRanking()`: Obtain trade ranking statistics.
+
+## More
 
 - [NFTScan API](https://developer.nftscan.com/)
 - [NFTScan API Docs](https://docs.nftscan.com/)
-- [NFTScan SDK Docs](https://yohuohuohuo.github.io/dmm-lib/)
 - [NFTScan NFT Explorer](https://www.nftscan.com/)

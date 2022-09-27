@@ -69,7 +69,7 @@ export default class NftscanSolanaTransaction extends BaseApi {
   }
 
   /**
-   * Retrieve transactions by token address
+   * Retrieve transactions by token address.
    * - This endpoint returns a list of NFT transactions for a single NFT. The transactions are sorted by timestamp with descending direction.
    * - details: {@link https://docs.nftscan.com/solana/getTransactionByTokenAddressUsingGET}
    * @param tokenAddress The NFT token address

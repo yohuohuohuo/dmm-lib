@@ -26,8 +26,8 @@ export default class NftscanSolanaAsset extends BaseApi {
 
     if (params) {
       const { limit } = params;
-      if (limit && limit > 1000) {
-        return invalidLimitError(1000);
+      if (limit && limit > 100) {
+        return invalidLimitError(100);
       }
     }
 
@@ -43,14 +43,14 @@ export default class NftscanSolanaAsset extends BaseApi {
    * - This endpoint returns all NFTs owned by an account address. And the NFTs are grouped according to collection.
    * - details: {@link https://docs.nftscan.com/solana/getAccountNftAssetsGroupByCollectionUsingGET}
    * @param accountAddress The address of the owner of the assets
-   * @returns Promise<{@link QueryAllAssetsResponse}>
+   * @returns Promise<Array<{@link QueryAllAssetsResponse}>>
    */
-  getAllAssets(accountAddress: string): Promise<QueryAllAssetsResponse> {
+  getAllAssets(accountAddress: string): Promise<Array<QueryAllAssetsResponse>> {
     if (isEmpty(accountAddress)) {
       return missingParamError('accountAddress');
     }
 
-    return nftscanGet<NsObject, QueryAllAssetsResponse>(
+    return nftscanGet<NsObject, Array<QueryAllAssetsResponse>>(
       this.config,
       `${NftscanConst.API.solana.assets.getAllAssets}${accountAddress}`,
     );

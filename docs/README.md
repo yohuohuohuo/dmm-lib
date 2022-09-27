@@ -5,9 +5,9 @@ tagline: Quick access to Web3 via NFTScan
 
 # 配置首页按钮
 actions:
-  - text: Guide
-    link: /guide/
-    type: primary
+  # - text: Guide
+  #   link: /guide/
+  #   type: primary
   - text: Github
     link: https://github.com/yohuohuohuo/dmm-lib
     type: secondary
@@ -26,17 +26,6 @@ QUICK START
 yarn add nftscan-sdk
 ```
 
-```ts
-import { ErcType, EvmChain, NftscanEvm } from "nftscan-sdk";
-
-const config = {
-  apiKey: "<YOUR_API_KEY>", // Replace with your NFTScan API key.
-  chain: EvmChain.ETH, // Replace with your chain.
-};
-
-const evm = new NftscanEvm(config);
-```
-
   </CodeGroupItem>
 
   <CodeGroupItem title="NPM">
@@ -45,6 +34,9 @@ const evm = new NftscanEvm(config);
 npm install nftscan-sdk
 ```
 
+  </CodeGroupItem>
+</CodeGroup>
+
 ```ts
 import { ErcType, EvmChain, NftscanEvm } from "nftscan-sdk";
 
@@ -55,6 +47,3 @@ const config = {
 
 const evm = new NftscanEvm(config);
 ```
-
-  </CodeGroupItem>
-</CodeGroup>

@@ -59,9 +59,13 @@ export default class NftscanEvmAsset extends BaseApi {
    * @param accountAddress The address of the owner of the assets
    * @param ercType Can be erc721 or erc1155.
    * @param showAttribute Whether to load attribute data of the asset. Default is false
-   * @returns Promise<{@link QueryAllAssetsResponse}>
+   * @returns Promise<Array<{@link QueryAllAssetsResponse}>>
    */
-  getAllAssets(accountAddress: string, ercType: ErcType, showAttribute?: boolean): Promise<QueryAllAssetsResponse> {
+  getAllAssets(
+    accountAddress: string,
+    ercType: ErcType,
+    showAttribute?: boolean,
+  ): Promise<Array<QueryAllAssetsResponse>> {
     if (isEmpty(accountAddress)) {
       return missingParamError('accountAddress');
     }
@@ -75,7 +79,7 @@ export default class NftscanEvmAsset extends BaseApi {
       show_attribute: showAttribute,
     };
 
-    return nftscanGet<NsObject, QueryAllAssetsResponse>(
+    return nftscanGet<NsObject, Array<QueryAllAssetsResponse>>(
       this.config,
       `${NftscanConst.API.evm.assets.getAllAssets}${accountAddress}`,
       params,
@@ -188,7 +192,7 @@ export default class NftscanEvmAsset extends BaseApi {
 
     const params: BatchQueryAssetsParams = {
       contract_address_with_token_id_list: list,
-      show_attribute: showAttribute,
+      show_attribute: !!showAttribute,
     };
     return nftscanPost<BatchQueryAssetsParams, Array<Asset>>(
       this.config,
@@ -207,15 +211,17 @@ export default class NftscanEvmAsset extends BaseApi {
    * @param params The query params {@link QueryAssetsByFiltersParams}
    * @returns Promise<{@link CommonAssetResponse}>
    */
-  queryAssetsByFilters(params: QueryAssetsByFiltersParams): Promise<CommonAssetResponse> {
-    const { contract_address_list: contractAddressList, limit } = params;
+  queryAssetsByFilters(params?: QueryAssetsByFiltersParams): Promise<CommonAssetResponse> {
+    if (params) {
+      const { contract_address_list: contractAddressList, limit } = params;
 
-    if (contractAddressList && contractAddressList.length > 50) {
-      return invalidParamError('contract_address_list', 'Maximum size is 50');
-    }
+      if (contractAddressList && contractAddressList.length > 50) {
+        return invalidParamError('contract_address_list', 'Maximum size is 50');
+      }
 
-    if (limit && limit > 100) {
-      return invalidLimitError(100);
+      if (limit && limit > 100) {
+        return invalidLimitError(100);
+      }
     }
 
     return nftscanPost<QueryAssetsByFiltersParams, CommonAssetResponse>(

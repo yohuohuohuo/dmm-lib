@@ -40,7 +40,7 @@ export default class NftscanSolanaCollection extends BaseApi {
    * - This endpoint returns information for a list of collections by applying search filters in the request body. The collections are sorted by create_block_number with ascending direction.
    * - details: {@link https://docs.nftscan.com/solana/getCollectionsUsingPOST_1}
    * @param params The query params {@link QueryCollectionsByFiltersParams}
-   * @returns Promise<{@link Array<Collection>}>
+   * @returns Promise<Array<{@link Collection}>>
    */
   queryCollectionsByFilters(params?: QueryCollectionsByFiltersParams): Promise<Array<Collection>> {
     if (params) {
