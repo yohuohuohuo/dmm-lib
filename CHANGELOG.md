@@ -1,4 +1,16 @@
 # Changelog
+### [2.2.7](https://github.com/yohuohuohuo/dmm-lib/compare/v2.2.6...v2.2.7) (2022-09-27)
+
+
+### ✨ Features | 新功能
+
+* update changelog ([c194e49](https://github.com/yohuohuohuo/dmm-lib/commit/c194e493c9c15e8a60b0dda274bdfadb90599b32))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* get evm and solana data at same time ([e01e237](https://github.com/yohuohuohuo/dmm-lib/commit/e01e2374a0deb7952df8b3271f5838b8b81fcc6d))
+
 ### [2.2.6](https://github.com/yohuohuohuo/dmm-lib/compare/v2.2.5...v2.2.6) (2022-09-27)
 
 
